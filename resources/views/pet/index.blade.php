@@ -1,21 +1,21 @@
 @extends('pet/theme')
-@section('title', 'Pet Project')
+@section('title', 'โครงการจัดการปัญหาสุนัข')
 @section('content')
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}/pet">Pet Project</a>
+        <a class="navbar-brand" href="{{ url('/') }}/pet" span style="font-family: FontNongnam; font-size: 28px">โครงการจัดการปัญหาสุนัข</a>
         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#info">Pet Info</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('/') }}/news">News</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('/') }}/map">Map</a></li>
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></li>
+            <ul class="navbar-nav ms-auto" span style="font-family: FontNongnam; font-size: 28px">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#info">ข้อมูลสุนัข</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">เกี่ยวกับโครงการ</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('/') }}/news">ข่าวสาร</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('/') }}/map">แผนที่สุนัข</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" data-bs-toggle="modal" data-bs-target="#contactModal">ติดต่อเรา</a></li>
             </ul>
         </div>
     </div>
@@ -26,7 +26,7 @@
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="portfolio/assets/img/logo.png" alt="..." />
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Pet Project Name</h1>
+                <h1 class="masthead-heading text-uppercase mb-0" span style="font-family: FontNongnam">โครงการจัดการปัญหาสุนัข</h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -34,14 +34,14 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Detail Project</p>
+                <p class="masthead-subheading font-weight-light mb-0" span style="font-family: FontNongnam; font-size: 30px">คนปลอดภัย เพราะสุนัขปลอดโรค</p>
             </div>
         </header>
         <!-- Pet Info Section-->
         <section class="page-section portfolio" id="info">
             <div class="container">
                 <!-- Pet Info Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pet Info</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0" span style="font-family: FontNongnam"><a href="{{ url('/') }}/info">สุนัขชุมชน</a></h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -221,7 +221,7 @@
         <section class="page-section bg-primary text-white mb-0" id="about">
             <div class="container">
                 <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-white" span style="font-family: FontNongnam">เกี่ยวกับโครงการจัดการปัญหาสุนัข</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -230,14 +230,18 @@
                 </div>
                 <!-- About Section Content-->
                 <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <p class="lead" span style="font-family: FontNongnam; font-size: 26px">1. สร้างความเข้าใจในการจัดการที่ถูกต้องกับสุนัข</p>
+                        <p class="lead" span style="font-family: FontNongnam; font-size: 26px">2. เปลี่ยนสุนัขในที่สาธารณะให้เป็น สุนัขชุมชน เป็นมิตรกับทุกคน</p>
+                    </div>
+                    <div class="col"></div>
                 </div>
                 <!-- About Section Button-->
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="{{ url('/') }}/about">
+                    <a class="btn btn-xl btn-outline-light" href="{{ url('/') }}/about" span style="font-family: FontNongnam; font-size: 28px">
                         <i class="fas fa-info-circle me-2"></i>
-                        More
+                        เพิ่มเติม
                     </a>
                 </div>
             </div>

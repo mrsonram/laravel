@@ -3,29 +3,21 @@
     <div class="container">
         <div class="row">
             <!-- Footer Location-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Location</h4>
-                <p class="lead mb-0">
+            <div class="col mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4" span style="font-family: FontNongnam">ที่อยู่</h4>
+                <p class="lead mb-0" span style="font-family: FontNongnam">
                     เลขที่ 1 หมู่ 20 ต.คลองหนึ่ง
                     <br />
                     อ.คลองหลวง จ.ปทุมธานี 13180
                 </p>
             </div>
             <!-- Footer Social Icons-->
-            <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Follow Me</h4>
+            <div class="col mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4" span style="font-family: FontNongnam">ติดติดเพิ่มเติมได้ที่</h4>
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-instagram"></i></a>
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-youtube"></i></a>
-            </div>
-            <!-- Footer About Text-->
-            <div class="col-lg-4">
-                <h4 class="text-uppercase mb-4">Main</h4>
-                <p class="lead mb-0">
-                    ติดตามเพิ่มเติมได้ที่
-                    <a href="http://www.vru.ac.th/">เว็บไซต์หลัก</a>
-                </p>
             </div>
         </div>
     </div>

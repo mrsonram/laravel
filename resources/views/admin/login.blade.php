@@ -1,16 +1,16 @@
 @extends('admin/theme')
-@section('title', 'Login')
+@section('title', 'Admin Pet Management Login')
 @section('content')
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}/login">Login</a>
+        <a class="navbar-brand" style="font-family: TH SarabunPSK; font-size: 30px">มหาวิทยาลัยราชภัฏวไลยอลงกรณ์ ในพระบรมราชูปถัมภ์</a>
         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('/') }}/pet">Home</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ url('/') }}/pet" style="font-family: TH SarabunPSK; font-size: 30px">หน้าหลัก</a></li>
             </ul>
         </div>
     </div>
@@ -19,7 +19,7 @@
 <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0">Login to Manage</h1>
+        <h1 class="masthead-heading text-uppercase mb-0" style="font-family: TH SarabunPSK">ระบบบริหารจัดการข้อมูลสุนัข</h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
