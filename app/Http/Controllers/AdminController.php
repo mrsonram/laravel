@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Employee;
-use App\Models\Position;
+use App\Models\Admin;
 use Faker\Extension\Helper;
 
-class EmployeeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,22 +19,28 @@ class EmployeeController extends Controller
 
         if(!empty($q))
         {
-            $employees = Employee::where("name","like","%{$q}%")
-                            ->orWhere("age", "like", "%{$q}%")
-                            ->orWhere("address", "like", "%{$q}%")
-                            ->orWhere("salary", "like", "%{$q}%")
+            $animals = Admin::where("animal_name", "like", "%{$q}%")
+                            ->orWhere("animal_type", "like", "%{$q}%")
+                            ->orWhere("animal_species", "like", "%{$q}%")
+                            ->orWhere("animal_marking", "like", "%{$q}%")
+                            ->orWhere("animal_collar", "like", "%{$q}%")
+                            ->orWhere("animal_age", "like", "%{$q}%")
+                            ->orWhere("animal_status", "like", "%{$q}%")
+                            ->orWhere("animal_vet", "like", "%{$q}%")
+                            ->orWhere("owner", "like", "%{$q}%")
+                            ->orWhere("pictures", "like", "%{$q}%")
                             ->get();;
         }
         else
         {
-            $employees = Employee::get();
+            $animals = Admin::get();
         }
         //Old Version
         // $data = ["employees" => $employees, "q" => $q];//Employee::getAll() ,];
         // return view('employee/index', $data);
 
         //New Version
-        return view('employee/index', compact('employees','q'));
+        return view('admin/manage', compact('animals','q'));
     }
 
     /**
@@ -45,8 +50,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $positions = Position::get();
-        return view("employee/create", compact('positions'));
+        $animals = Admin::get();
+        return view("admin/create", compact('animals'));
     }
 
     /**
@@ -59,9 +64,9 @@ class EmployeeController extends Controller
     {
         $requestData = $request->all();
 
-        Employee::create($requestData);
+        Admin::create($requestData);
 
-        return redirect('employee');
+        return redirect('manage');
     }
 
     /**
@@ -72,8 +77,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::findOrFail($id);
-        return view('employee/show', compact('employee'));
+        $animal = Admin::findOrFail($id);
+        return view('admin/show', compact('animal'));
     }
 
     /**
@@ -84,9 +89,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = Employee::findOrFail($id);
-        $positions = Position::get();
-        return view('employee/edit', compact('employee', 'positions'));
+        $animal = Admin::findOrFail($id);
+        return view('admin/edit', compact('animal'));
     }
 
     /**
@@ -100,11 +104,11 @@ class EmployeeController extends Controller
     {
         $requestData = $request->all();
 
-        $employee = Employee::findOrFail($id);
+        $animal = Admin::findOrFail($id);
 
-        $employee->update($requestData);
+        $animal->update($requestData);
 
-        return redirect('employee');
+        return redirect('manage');
     }
 
     /**
@@ -115,8 +119,8 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        Employee::destroy($id);
+        Admin::destroy($id);
 
-        return redirect('employee');
+        return redirect('animal');
     }
 }

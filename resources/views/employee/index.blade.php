@@ -50,7 +50,6 @@
                         <td scope="col">{{ $employee->salary }}</td>
                         <td scope="col">{{ $employee->position_id }}</td>
                         <td scope="col">{{ $employee->position->position_name }}</td>
-
                         <td>
                         <div class="d-grid gap-2 d-md-block">
                             <a class="btn btn-info btn-sm" href="{{ url('/') }}/employee/{{ $employee->employee_id }}">View</a>

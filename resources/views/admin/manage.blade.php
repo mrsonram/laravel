@@ -1,13 +1,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <!DOCTYPE html>
-<span style="font-family: TH SarabunPSK">
 <head>
     <title>จัดการข้อมูล</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}/home">Manage</a>
+        <a class="navbar-brand" href="{{ url('/') }}/manage">Manage</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,8 +16,8 @@
                     <a class="nav-link active" aria-current="page" href="{{ url('/') }}/create">Add Info</a>
                 </li>
             </ul>
-            <form class="d-flex" action="#!" method="GET">
-                <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="">
+            <form class="d-flex" action="{{ url('/') }}/manage" method="GET">
+                <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="{{ $q }}">
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
@@ -34,7 +33,8 @@
                         <th scope="col">ประเภท</th>
                         <th scope="col">พันธุ์</th>
                         <th scope="col">ลาย</th>
-                        <th scope="col">เพศปลอกคอสี</th>
+                        <th scope="col">เพศ</th>
+                        <th scope="col">ปลอกคอสี</th>
                         <th scope="col">อายุ</th>
                         <th scope="col">สถานะ</th>
                         <th scope="col">สถานะทำหมัน</th>
@@ -43,23 +43,24 @@
                         <th scope="col">จัดการ</th>
                     </tr>
                 </thead>
-                <tbody>
+                @foreach($animals as $animal)
                     <tr>
-                        <td scope="col">ตูบ #1</td>
-                        <td scope="col">สุนัข</td>
-                        <td scope="col">ไทยสผม</td>
-                        <td scope="col">ขาว ดำ</td>
-                        <td scope="col">สีเขียว</td>
-                        <td scope="col">6 ปี</td>
-                        <td scope="col">ยังมีชีวิต</td>
-                        <td scope="col">ทำหมันแล้ว</td>
-                        <td scope="col">ไม่ทราบ</td>
-                        <td scope="col">รูป</td>
+                        <td scope="col">{{ $animal->animal_name }}</td>
+                        <td scope="col">{{ $animal->animal_type }}</td>
+                        <td scope="col">{{ $animal->animal_species }}</td>
+                        <td scope="col">{{ $animal->animal_marking }}</td>
+                        <td scope="col">{{ $animal->animal_gender }}</td>
+                        <td scope="col">{{ $animal->animal_collar }}</td>
+                        <td scope="col">{{ $animal->animal_age }}</td>
+                        <td scope="col">{{ $animal->animal_status }}</td>
+                        <td scope="col">{{ $animal->animal_vet }}</td>
+                        <td scope="col">{{ $animal->owner }}</td>
+                        <td scope="col">{{ $animal->pictures }}</td>
                         <td>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-info btn-sm" href="#!">View</a>
-                            <a class="btn btn-warning btn-sm" href="#!">Edit</a>
-                            <form action="#!" method="POST" onsubmit="validate();" style="display:inline">
+                            <a class="btn btn-info btn-sm" href="{{ url('/') }}/manage/{{ $animal->animal_id }}">View</a>
+                            <a class="btn btn-warning btn-sm" href="{{ url('/') }}/manage/{{ $animal->animal_id }}/edit">Edit</a>
+                            <form action="{{ url('/') }}/manage/{{ $animal->animal_id }}" method="POST" onsubmit="validate();" style="display:inline">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-danger btn-sm" type="submit">Delete</button>
@@ -67,30 +68,7 @@
                         </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td scope="col">ตูบ #2</td>
-                        <td scope="col">สุนัข</td>
-                        <td scope="col">ไทยสผม</td>
-                        <td scope="col">ขาว</td>
-                        <td scope="col">สีเหลือง</td>
-                        <td scope="col">8 ปี</td>
-                        <td scope="col">ยังมีชีวิต</td>
-                        <td scope="col">ทำหมันแล้ว</td>
-                        <td scope="col">ไม่ทราบ</td>
-                        <td scope="col">รูป</td>
-                        <td>
-                        <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-info btn-sm" href="#!">View</a>
-                            <a class="btn btn-warning btn-sm" href="#!">Edit</a>
-                            <form action="#!" method="POST" onsubmit="validate();" style="display:inline">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                            </form>
-                        </div>
-                        </td>
-                    </tr>
-                </tbody>
+                @endforeach
             </table>
             <script>
                 function validate()

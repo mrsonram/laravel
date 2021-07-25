@@ -75,6 +75,17 @@ Route::get('/login', function () {
     return view('admin/login');
 });
 
-Route::get('/home', function () {
-    return view('admin/manage');
-});
+//Admin
+Route::get('/manage', 'AdminController@index');
+
+Route::get('/create', 'AdminController@create');
+
+Route::post('/manage', 'AdminController@store');
+
+Route::get('/manage/{id}', 'AdminController@show');
+
+Route::get('/manage/{id}/edit', 'AdminController@edit');
+
+Route::put('/manage/{id}', 'AdminController@update');
+
+Route::delete('/manage/{id}', 'AdminController@destroy');
