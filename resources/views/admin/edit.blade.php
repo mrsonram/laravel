@@ -2,8 +2,8 @@
 
 <div class="container">
     <h1>Edit Pet</h1>
-    <a href="{{ url('/') }}/manage">back</a>
-    <form method="POST" action="{{ url('/') }}/manage/{{ $animal->animal_id }}">
+    <a href="{{ url('/') }}/manage">กลับ</a>
+    <form method="POST" action="{{ url('/') }}/manage/{{ $animals->id }}">
 
 	    {{ csrf_field() }}
 	    {{ method_field('PUT') }}

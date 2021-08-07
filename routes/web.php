@@ -89,3 +89,21 @@ Route::get('/manage/{id}/edit', 'AdminController@edit');
 Route::put('/manage/{id}', 'AdminController@update');
 
 Route::delete('/manage/{id}', 'AdminController@destroy');
+
+Route::get('/post', function () {
+    return view('admin/dashboard');
+});
+
+Route::get('/home', 'ManageController@index');
+
+Route::get("/home/create", "ManageController@create");
+
+Route::post("/home", "ManageController@store");
+
+Route::get('/home/{id}', 'ManageController@show');
+
+Route::get("/home/{id}/edit", "ManageController@edit");
+
+Route::put("/home/{id}", "ManageController@update");
+
+Route::delete('/home/{id}', 'ManageController@destroy');

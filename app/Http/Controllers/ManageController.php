@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Admin;
+use App\Models\Manage;
 
-class AdminController extends Controller
+class ManageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,25 +18,17 @@ class AdminController extends Controller
 
         if(!empty($q))
         {
-            $animals = Admin::where("name", "like", "%{$q}%")
+            $animals = Manage::where("name", "like", "%{$q}%")
                             ->orWhere("type", "like", "%{$q}%")
-                            ->orWhere("species", "like", "%{$q}%")
-                            ->orWhere("marking", "like", "%{$q}%")
                             ->orWhere("gender", "like", "%{$q}%")
-                            ->orWhere("collar", "like", "%{$q}%")
-                            ->orWhere("age", "like", "%{$q}%")
-                            ->orWhere("status", "like", "%{$q}%")
-                            ->orWhere("vet", "like", "%{$q}%")
-                            ->orWhere("owner", "like", "%{$q}%")
-                            ->orWhere("pictures", "like", "%{$q}%")
                             ->get();;
         }
         else
         {
-            $animals = Admin::get();
+            $animals = Manage::get();
         }
 
-        return view('admin/manage', compact('animals','q'));
+        return view('manage/index', compact('animals','q'));
     }
 
     /**
@@ -46,8 +38,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $animals = Admin::get();
-        return view("admin/create", compact('animals'));
+        $animals = Manage::get();
+        return view("manage/create", compact('animals'));
     }
 
     /**
@@ -60,9 +52,9 @@ class AdminController extends Controller
     {
         $requestData = $request->all();
 
-        Admin::create($requestData);
+        Manage::create($requestData);
 
-        return redirect('manage');
+        return redirect('home');
     }
 
     /**
@@ -73,8 +65,8 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        $animals = Admin::findOrFail($id);
-        return view('admin/show', compact('animals'));
+        $animals = Manage::findOrFail($id);
+        return view('manage/show', compact('animals'));
     }
 
     /**
@@ -85,8 +77,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $animals = Admin::findOrFail($id);
-        return view('admin/edit', compact('animals'));
+        $animals = Manage::findOrFail($id);
+        return view('manage/edit', compact('animals'));
     }
 
     /**
@@ -100,11 +92,11 @@ class AdminController extends Controller
     {
         $requestData = $request->all();
 
-        $animals = Admin::findOrFail($id);
+        $animals = Manage::findOrFail($id);
 
         $animals->update($requestData);
 
-        return redirect('manage');
+        return redirect('home');
     }
 
     /**
@@ -115,8 +107,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        Admin::destroy($id);
-
-        return redirect('manage');
+        //
     }
 }

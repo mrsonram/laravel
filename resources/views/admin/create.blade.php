@@ -2,8 +2,8 @@
 @section('content')
 <div class="container">
     <h1>Create New Pet</h1>
-    <a href="{{ url('/') }}/manage">back</a>
-    <form action="{{ url('/') }}/manage" method="POST">
+    <a href="{{ url('/') }}/manage">กลับ</a>
+    <form method="POST" action="{{ url('/') }}/manage">
 
         {{ csrf_field() }}
         {{ method_field('POST') }}

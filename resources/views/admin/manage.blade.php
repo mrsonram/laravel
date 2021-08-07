@@ -29,6 +29,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th scope="col">ลำดับ</th>
                         <th scope="col">ชื่อ</th>
                         <th scope="col">ประเภท</th>
                         <th scope="col">พันธุ์</th>
@@ -43,24 +44,25 @@
                         <th scope="col">จัดการ</th>
                     </tr>
                 </thead>
-                @foreach($animals as $animal)
+                @foreach($animals as $animals)
                     <tr>
-                        <td scope="col">{{ $animal->animal_name }}</td>
-                        <td scope="col">{{ $animal->animal_type }}</td>
-                        <td scope="col">{{ $animal->animal_species }}</td>
-                        <td scope="col">{{ $animal->animal_marking }}</td>
-                        <td scope="col">{{ $animal->animal_gender }}</td>
-                        <td scope="col">{{ $animal->animal_collar }}</td>
-                        <td scope="col">{{ $animal->animal_age }}</td>
-                        <td scope="col">{{ $animal->animal_status }}</td>
-                        <td scope="col">{{ $animal->animal_vet }}</td>
-                        <td scope="col">{{ $animal->owner }}</td>
-                        <td scope="col">{{ $animal->pictures }}</td>
+                        <td scope="col">{{ $animals->id }}</td>
+                        <td scope="col">{{ $animals->name }}</td>
+                        <td scope="col">{{ $animals->type }}</td>
+                        <td scope="col">{{ $animals->species }}</td>
+                        <td scope="col">{{ $animals->marking }}</td>
+                        <td scope="col">{{ $animals->gender }}</td>
+                        <td scope="col">{{ $animals->collar }}</td>
+                        <td scope="col">{{ $animals->age }}</td>
+                        <td scope="col">{{ $animals->status }}</td>
+                        <td scope="col">{{ $animals->vet }}</td>
+                        <td scope="col">{{ $animals->owner }}</td>
+                        <td scope="col">{{ $animals->pictures }}</td>
                         <td>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-info btn-sm" href="{{ url('/') }}/manage/{{ $animal->animal_id }}">View</a>
-                            <a class="btn btn-warning btn-sm" href="{{ url('/') }}/manage/{{ $animal->animal_id }}/edit">Edit</a>
-                            <form action="{{ url('/') }}/manage/{{ $animal->animal_id }}" method="POST" onsubmit="validate();" style="display:inline">
+                            <a class="btn btn-info btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}">View</a>
+                            <a class="btn btn-warning btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}/edit">Edit</a>
+                            <form action="{{ url('/') }}/manage/{{ $animals->id }}" method="POST" onsubmit="validate();" style="display:inline">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-danger btn-sm" type="submit">Delete</button>
