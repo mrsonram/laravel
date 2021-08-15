@@ -75,6 +75,10 @@ Route::get('/login', function () {
     return view('admin/login');
 });
 
+Route::get('/map', function () {
+    return view('pet/map');
+});
+
 //Admin
 Route::get('/manage', 'AdminController@index');
 

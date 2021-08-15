@@ -12,6 +12,9 @@
             <div class="col"></div>
             <div class="col-6">
                 @include("admin/form")
+                <script>
+                    document.querySelector("#inputvet").value = "{{ isset($animals->vet) ? $animals->vet : '' }}";
+                </script>
                 <br>
                 <button type="submit" class="btn btn-primary">อัพเดต</button>
             </div>

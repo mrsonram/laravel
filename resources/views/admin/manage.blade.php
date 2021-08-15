@@ -40,7 +40,6 @@
                         <th scope="col">สถานะ</th>
                         <th scope="col">สถานะทำหมัน</th>
                         <th scope="col">เจ้าของ</th>
-                        <th scope="col">รูป</th>
                         <th scope="col">จัดการ</th>
                     </tr>
                 </thead>
@@ -57,7 +56,6 @@
                         <td scope="col">{{ $animals->status }}</td>
                         <td scope="col">{{ $animals->vet }}</td>
                         <td scope="col">{{ $animals->owner }}</td>
-                        <td scope="col">{{ $animals->pictures }}</td>
                         <td>
                         <div class="d-grid gap-2 d-md-block">
                             <a class="btn btn-info btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}">View</a>

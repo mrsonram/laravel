@@ -21,7 +21,10 @@
             <option selected>ตัวเลือก</option>
             <option>เพศผู้</option>
             <option>เพศเมีย</option>
-        </select>
+            </select>
+            <script>
+                document.querySelector("#inputgender").value = "{{ isset($animals->gender) ? $animals->gender : '' }}";
+            </script>
     </div>
     <div class="col-12">
         <label for="inputcollar" class="form-label">ปลอกคอสี</label>
@@ -31,6 +34,9 @@
             <option>สีเหลือง</option>
             <option>สีแดง</option>
         </select>
+        <script>
+            document.querySelector("#inputcollar").value = "{{ isset($animals->collar) ? $animals->collar : '' }}";
+        </script>
     </div>
     <div class="col-12">
         <label for="inputmarking" class="form-label">อายุ</label>
@@ -43,6 +49,9 @@
             <option>มีชีวิตอยู่</option>
             <option>เสียชีวิตแล้ว</option>
         </select>
+        <script>
+            document.querySelector("#inputstatus").value = "{{ isset($animals->status) ? $animals->status : '' }}";
+        </script>
     </div>
     <div class="col-12">
         <label for="inputvet" class="form-label">สถานะทำหมัน</label>
