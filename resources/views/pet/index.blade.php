@@ -24,7 +24,7 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="portfolio/assets/img/logo.png" alt="..." />
+                <img class="masthead-avatar mb-5" src="{{ asset('portfolio/assets/img/logo.png') }}" alt="..." />
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0" span style="font-family: FontNongnam">โครงการจัดการปัญหาสุนัข</h1>
                 <!-- Icon Divider-->
