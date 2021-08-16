@@ -71,7 +71,7 @@ Route::get('/about', function () {
     return view('pet/about');
 });
 
-Route::get('/login', function () {
+Route::get('/administrator', function () {
     return view('admin/login');
 });
 
@@ -98,7 +98,7 @@ Route::get('/post', function () {
     return view('admin/dashboard');
 });
 
-Route::get('/home', 'ManageController@index');
+Route::get('/index', 'ManageController@index');
 
 Route::get("/home/create", "ManageController@create");
 
@@ -111,3 +111,7 @@ Route::get("/home/{id}/edit", "ManageController@edit");
 Route::put("/home/{id}", "ManageController@update");
 
 Route::delete('/home/{id}', 'ManageController@destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

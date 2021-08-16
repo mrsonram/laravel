@@ -28,7 +28,6 @@ class AdminController extends Controller
                             ->orWhere("status", "like", "%{$q}%")
                             ->orWhere("vet", "like", "%{$q}%")
                             ->orWhere("owner", "like", "%{$q}%")
-                            ->orWhere("pictures", "like", "%{$q}%")
                             ->get();;
         }
         else

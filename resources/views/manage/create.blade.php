@@ -1,22 +1,36 @@
-<h1>Create New Pets</h1>
-<a href="{{ url('/') }}/home">back</a>
-<form action="{{ url('/') }}/home" method="POST">
+<head>
+    <span style="font-family: Google Sans">
+    <title>Create</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1>Create New Pets</h1>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ url('/') }}/home" method="POST">
 
-	{{ csrf_field() }}
-	{{ method_field('POST') }}
+                        {{ csrf_field() }}
+                        {{ method_field('POST') }}
 
-	@include("manage/form")
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Post Image:</strong>
-             <input type="file" name="image" class="form-control" placeholder="Post Title">
-            @error('image')
-              <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-           @enderror
+                        @include("manage/form")
+
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success">Create</button>
+                            <a href="{{ url('/') }}/home" class="btn btn-secondary">Cancel</a>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+            </div>
         </div>
-    </div>
-
-	<div>
-		<button type="submit">Create</button>
-	</div>
-</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>

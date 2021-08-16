@@ -14,7 +14,7 @@ class Manage extends Model
     //ชื่อตารางในฐานข้อมูล
     protected $table = "animals";
     //ชื่อคอลัมน์ในฐานข้อมูลที่อนุญาติให้แก้ไขข้อมูล
-    protected $fillable = ["name", "type", "gender"];
+    protected $fillable = ["name", "gender", "image"];
     //Primary Key
     protected $primaryKey = "id";
 }

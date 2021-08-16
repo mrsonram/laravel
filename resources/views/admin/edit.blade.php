@@ -13,6 +13,9 @@
             <div class="col-6">
                 @include("admin/form")
                 <script>
+                    document.querySelector("#inputgender").value = "{{ isset($animals->gender) ? $animals->gender : '' }}";
+                    document.querySelector("#inputcollar").value = "{{ isset($animals->collar) ? $animals->collar : '' }}";
+                    document.querySelector("#inputstatus").value = "{{ isset($animals->status) ? $animals->status : '' }}";
                     document.querySelector("#inputvet").value = "{{ isset($animals->vet) ? $animals->vet : '' }}";
                 </script>
                 <br>

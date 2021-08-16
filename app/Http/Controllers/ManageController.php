@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Manage;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+
 class ManageController extends Controller
 {
     /**
@@ -19,7 +22,6 @@ class ManageController extends Controller
         if(!empty($q))
         {
             $animals = Manage::where("name", "like", "%{$q}%")
-                            ->orWhere("type", "like", "%{$q}%")
                             ->orWhere("gender", "like", "%{$q}%")
                             ->get();;
         }
@@ -51,6 +53,10 @@ class ManageController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->all();
+                if ($request->hasFile('image')) {
+            $requestData['image'] = $request->file('image')
+                ->store('public/images');
+        }
 
         Manage::create($requestData);
 
@@ -91,6 +97,10 @@ class ManageController extends Controller
     public function update(Request $request, $id)
     {
         $requestData = $request->all();
+        if ($request->hasFile('image')) {
+            $requestData['image'] = $request->file('image')
+                ->store('public/images');
+        }
 
         $animals = Manage::findOrFail($id);
 
@@ -107,6 +117,8 @@ class ManageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Manage::destroy($id);
+
+        return redirect('home');
     }
 }

@@ -12,6 +12,13 @@
             <div class="col"></div>
             <div class="col-6">
                 @include("admin/form")
+                <div class="form-group">
+                    <strong>รูปภาพ</strong>
+                        <input type="file" name="image" class="form-control" placeholder="Post Title">
+                        @error('image')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                   @enderror
+                </div>
                 <br>
                 <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
             </div>
