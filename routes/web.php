@@ -101,20 +101,13 @@ Route::get('/post', function () {
     return view('admin/dashboard');
 });
 
-Route::get('/index', 'ManageController@index');
+//Manage
+Route::resource('index', 'ManageController');
 
-Route::get("/home/create", "ManageController@create");
 
-Route::post("/home", "ManageController@store");
-
-Route::get('/home/{id}', 'ManageController@show');
-
-Route::get("/home/{id}/edit", "ManageController@edit");
-
-Route::put("/home/{id}", "ManageController@update");
-
-Route::delete('/home/{id}', 'ManageController@destroy');
-
+//Login
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/manage', [App\Http\Controllers\AdminController::class, 'index'])->name('manage');

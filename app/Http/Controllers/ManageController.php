@@ -52,15 +52,31 @@ class ManageController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData = $request->all();
-                if ($request->hasFile('image')) {
-            $requestData['image'] = $request->file('image')
-                ->store('public/images');
-        }
+        //$requestData = $request->all();
+        //        if ($request->hasFile('image')) {
+        //    $requestData['image'] = $request->file('image');
+                //->move('uploads');
 
-        Manage::create($requestData);
+                $img = $request->file('image');
 
-        return redirect('home');
+                $img_gen = hexdec(uniqid());
+
+                $img_exe = strtolower($img->getClientOriginalExtension());
+                $img_name = $img_gen.'.'.$img_exe;
+
+                $save = 'images/';
+                $path = $save.$img_name;
+        //}
+
+        //Manage::create($requestData);
+
+        Manage::insert([
+            'name'=>$request->name,
+            'gender'=>$request->gender,
+            'image'=>$path,
+        ]);
+        $img->move($save, $img_name);
+        return redirect('index');
     }
 
     /**
@@ -96,17 +112,43 @@ class ManageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $requestData = $request->all();
-        if ($request->hasFile('image')) {
-            $requestData['image'] = $request->file('image')
-                ->store('public/images');
-        }
+        //$requestData = $request->all();
+        //if ($request->hasFile('image')) {
+        //    $requestData['image'] = $request->file('image')
+        //        ->store('public/images');
+        //}
 
-        $animals = Manage::findOrFail($id);
+        //$animals = Manage::findOrFail($id);
 
-        $animals->update($requestData);
+        //$animals->update($requestData);
 
-        return redirect('home');
+        //return redirect('home');
+
+        $img = $request->file('image');
+            if ($img){
+                $img_gen = hexdec(uniqid());
+                $img_exe = strtolower($img->getClientOriginalExtension());
+                $img_name = $img_gen.'.'.$img_exe;
+                $save = 'images/';
+                $path = $save.$img_name;
+
+                Manage::find($id)->update([
+                    'name'=>$request->name,
+                    'gender'=>$request->gender,
+                    'image'=>$path,
+                ]);
+                $img->move($save, $img_name);
+                return redirect('index');
+            }
+
+            else
+            {
+                Manage::find($id)->update([
+                    'name'=>$request->name,
+                    'gender'=>$request->gender,
+                ]);
+                return redirect('index');
+            }
     }
 
     /**
@@ -119,6 +161,6 @@ class ManageController extends Controller
     {
         Manage::destroy($id);
 
-        return redirect('home');
+        return redirect('index');
     }
 }

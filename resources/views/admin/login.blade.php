@@ -46,40 +46,42 @@
                     <div class="col"></div>
                     <div class="col-6">
                         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Username input-->
+
+                            <!-- Email input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="user" type="text" placeholder="Enter your username..." data-sb-validations="required" />
-                                <label for="name">Username</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A Username is required.</div>
+                                <input id="email" class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter your email..." data-sb-validations="required" />
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <label for="email">Email</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">Enter an email</div>
                             </div>
+
                             <!-- Password input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="password" type="password" placeholder="Password" data-sb-validations="required,password" />
+                                <input class="form-control" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password" data-sb-validations="required,password" />
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <label for="password">Password</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">Enter a password</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email or Password is valid.</div>
                             </div>
+
                             <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             <!-- Submit Button-->
                             <div class="d-grid gap-2">
-                            <button class="btn btn-primary btn-lg btn-xl disabled" id="submitButton" type="submit">Login</button>
-                            <button class="btn btn-outline-secondary btn-lg btn-xl" id="submitButton" type="submit">Forgot Password</button>
+                            <button class="btn btn-primary btn-lg btn-xl" id="submitButton" type="submit">{{ __('Login') }}</button>
+                            @if (Route::has('password.request'))
+                                    <a class="btn btn-outline-secondary btn-lg btn-xl" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                            @endif
                             </div>
                         </form>
                     </div>

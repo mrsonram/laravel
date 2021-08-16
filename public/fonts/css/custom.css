@@ -1,0 +1,66 @@
+@font-face {
+    font-family: "Noto Sans Thai";
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://cdn.lazywasabi.net/fonts/NotoSansThai/NotoSansThai-Regular.woff2")
+        format("woff2"),
+      url("https://cdn.lazywasabi.net/fonts/NotoSansThai/NotoSansThai-Regular.woff")
+        format("woff");
+  }
+
+  @font-face {
+    font-family: "Noto Sans Thai";
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://cdn.lazywasabi.net/fonts/NotoSansThai/NotoSansThai-Bold.woff2")
+        format("woff2"),
+      url("https://cdn.lazywasabi.net/fonts/NotoSansThai/NotoSansThai-Bold.woff")
+        format("woff");
+  }
+
+  @font-face {
+    font-family: "Noto Serif Thai";
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://cdn.lazywasabi.net/fonts/NotoSerifThai/NotoSerifThai-Regular.woff2")
+        format("woff2"),
+      url("https://cdn.lazywasabi.net/fonts/NotoSerifThai/NotoSerifThai-Regular.woff")
+        format("woff");
+  }
+
+  @font-face {
+    font-family: "Noto Serif Thai";
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://cdn.lazywasabi.net/fonts/NotoSerifThai/NotoSerifThai-Bold.woff2")
+        format("woff2"),
+      url("https://cdn.lazywasabi.net/fonts/NotoSerifThai/NotoSerifThai-Bold.woff")
+        format("woff");
+  }
+
+  * {
+    font-family: "Noto Sans Thai", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  body.serif {
+    font-family: "Noto Serif Thai", Lora, Georgia, Cambria, "Times New Roman",
+      Times, serif;
+  }
+
+  textarea {
+    height: 8.8em;
+  }
+
+  textarea::placeholder {
+    color: #212121;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  a.active {
+    font-weight: bold;
+  }
