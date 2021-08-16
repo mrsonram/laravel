@@ -2,8 +2,8 @@
 @section('title', 'แผนที่สุนัข')
 @include('pet/menu')
 <head>
-    <link rel="stylesheet" href="./google_map/css/style.css"/>
-    <script src="./google_map/js/app.js"></script>
+    <link rel="stylesheet" href="{{ asset('/google_map/css/style.css') }}"/>
+    <script src="{{ asset('/google_map/js/app.js') }}"></script>
     <style>
         #map{
             height: 700px;

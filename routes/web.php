@@ -59,6 +59,9 @@ Route::get('/test', function () {
 });
 
 //Pet Project
+
+Route::get('/pet', 'PetController@index');
+
 Route::get('/news', function () {
     return view('pet/news');
 });
