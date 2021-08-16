@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', 'PetController@index');
 
 Route::get('/home', function () {
     return '<h1>Test Web</h1>';
@@ -57,8 +59,6 @@ Route::get('/test', function () {
 });
 
 //Pet Project
-Route::get('/pet', 'PetController@index');
-
 Route::get('/news', function () {
     return view('pet/news');
 });
