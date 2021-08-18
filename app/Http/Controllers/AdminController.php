@@ -62,10 +62,39 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData = $request->all();
+        //$requestData = $request->all();
 
-        Admin::create($requestData);
+        //Admin::create($requestData);
 
+        //return redirect('manage');
+
+        $img = $request->file('image');
+
+                $img_gen = hexdec(uniqid());
+
+                $img_exe = strtolower($img->getClientOriginalExtension());
+                $img_name = $img_gen.'.'.$img_exe;
+
+                $save = 'images/';
+                $path = $save.$img_name;
+        //}
+
+        //Manage::create($requestData);
+
+        Admin::insert([
+            'name'=>$request->name,
+            'type'=>$request->type,
+            'species'=>$request->species,
+            'marking'=>$request->marking,
+            'gender'=>$request->gender,
+            'collar'=>$request->collar,
+            'age'=>$request->age,
+            'status'=>$request->status,
+            'vet'=>$request->vet,
+            'owner'=>$request->owner,
+            'image'=>$path,
+        ]);
+        $img->move($save, $img_name);
         return redirect('manage');
     }
 
@@ -102,13 +131,44 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $requestData = $request->all();
+        //$requestData = $request->all();
 
-        $animals = Admin::findOrFail($id);
+        //$animals = Admin::findOrFail($id);
 
-        $animals->update($requestData);
+        //$animals->update($requestData);
 
-        return redirect('manage');
+        //return redirect('manage');
+        $img = $request->file('image');
+            if ($img){
+                $img_gen = hexdec(uniqid());
+                $img_exe = strtolower($img->getClientOriginalExtension());
+                $img_name = $img_gen.'.'.$img_exe;
+                $save = 'images/';
+                $path = $save.$img_name;
+
+                Admin::find($id)->update([
+                    'image'=>$path,
+                ]);
+                $img->move($save, $img_name);
+                return redirect('manage');
+            }
+
+            else
+            {
+                Admin::find($id)->update([
+                    'name'=>$request->name,
+                    'type'=>$request->type,
+                    'species'=>$request->species,
+                    'marking'=>$request->marking,
+                    'gender'=>$request->gender,
+                    'collar'=>$request->collar,
+                    'age'=>$request->age,
+                    'status'=>$request->status,
+                    'vet'=>$request->vet,
+                    'owner'=>$request->owner,
+                ]);
+                return redirect('manage');
+            }
     }
 
     /**

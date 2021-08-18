@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PetController@index');
 
-Route::get('/home', function () {
-    return '<h1>Test Web</h1>';
-});
+//Route::get('/home', function () {
+//    return '<h1>Test Web</h1>';
+//});
 
 Route::get('/profile', 'ProfileController@index');
 
@@ -108,6 +108,6 @@ Route::resource('index', 'ManageController');
 //Login
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/manage', [App\Http\Controllers\AdminController::class, 'index'])->name('manage');

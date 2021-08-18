@@ -1,29 +1,34 @@
-@extends('admin/theme')
+@extends('theme.bootstrap_5')
+@section('title', 'Create')
 @section('content')
 <div class="container">
-    <h1>Create New Pet</h1>
-    <a href="{{ url('/') }}/manage">กลับ</a>
-    <form method="POST" action="{{ url('/') }}/manage">
-
-        {{ csrf_field() }}
-        {{ method_field('POST') }}
-
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-6">
-                @include("admin/form")
-                <div class="form-group">
-                    <strong>รูปภาพ</strong>
-                        <input type="file" name="image" class="form-control" placeholder="Post Title">
-                        @error('image')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                   @enderror
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <strong>กรอกข้อมูล</strong>
                 </div>
-                <br>
-                <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+                <div class="card-body">
+                    <form method="POST" action="{{ url('/manage') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                    <!-- <form method="POST" action="{{ url('/') }}/manage">-->
+
+                    {{ csrf_field() }}
+                    {{ method_field('POST') }}
+
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-12">
+                            @include("admin/form")
+
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            <a href="{{ url('/') }}/manage" class="btn btn-secondary">Cancel</a>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    </form>
+                </div>
             </div>
-            <div class="col"></div>
         </div>
-    </form>
+    </div>
 </div>
 @endsection

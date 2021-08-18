@@ -1,58 +1,78 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<head>
-    <title>{{ $animals->name }}</title>
-</head>
-
+@extends('theme.bootstrap_5')
+@section('title')
+    {{ $animals->name }}
+@endsection
+@section('content')
 <div class="container">
-
-<h1>ID : {{ $animals->id }}</h1>
-<div>
-	<strong>ชื่อ : </strong>
-	<span>{{ $animals->name }}</span>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Manage</strong>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">Back</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>รายละเอียด</strong>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <img src="{{ asset($animals->image) }}" class="card-img-top" alt="...">
+                        </ul>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <strong>ID : </strong>
+                                {{ $animals->id }}
+                            </p>
+                            <p class="card-text">
+                                <strong>ชื่อ : </strong>
+                                {{ $animals->name }}
+                            </p>
+                            <p class="card-text">
+                                <strong>พันธุ์ : </strong>
+                                {{ $animals->species }}
+                            </p>
+                            <p class="card-text">
+                                <strong>ลาย : </strong>
+                                {{ $animals->marking }}
+                            </p>
+                            <p class="card-text">
+                                <strong>เพศ : </strong>
+                                {{ $animals->gender }}
+                            </p>
+                            <p class="card-text">
+                                <strong>ปลอกคอสี : </strong>
+                                {{ $animals->collar }}
+                            </p>
+                            <p class="card-text">
+                                <strong>อายุ : </strong>
+                                {{ $animals->age }} ปี
+                            </p>
+                            <p class="card-text">
+                                <strong>สถานะ : </strong>
+                                {{ $animals->status }}
+                            </p>
+                            <p class="card-text">
+                                <strong>สถานะทำหมัน : </strong>
+                                {{ $animals->vet }}
+                            </p>
+                            <p class="card-text">
+                                <strong>เจ้าของ : </strong>
+                                {{ $animals->owner }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-	<strong>ประเภท : </strong>
-	<span>{{ $animals->type }}</span>
-</div>
-<div>
-	<strong>พันธุ์ : </strong>
-	<span>{{ $animals->species }}</span>
-</div>
-<div>
-	<strong>ลาย : </strong>
-	<span>{{ $animals->marking }}</span>
-</div>
-<div>
-	<strong>เพศ : </strong>
-	<span>{{ $animals->gender }}</span>
-</div>
-<div>
-	<strong>ปลอกคอสี : </strong>
-	<span>{{ $animals->collar }}</span>
-</div>
-<div>
-	<strong>อายุ : </strong>
-	<span>{{ $animals->age }}</span>
-</div>
-<div>
-	<strong>สถานะ : </strong>
-	<span>{{ $animals->status }}</span>
-</div>
-<div>
-	<strong>สถานะทำหมัน : </strong>
-	<span>{{ $animals->vet }}</span>
-</div>
-<div>
-	<strong>เจ้าของ : </strong>
-	<span>{{ $animals->owner }}</span>
-</div>
-<div>
-	<strong>รูป : </strong>
-	<span>{{ $animals->pictures }}</span>
-</div>
-	<a href="{{ url('/') }}/manage">กลับ</a>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+@endsection

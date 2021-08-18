@@ -4,10 +4,6 @@
         <input type="text" class="form-control" name="name" value="{{ isset($animals->name) ? $animals->name : '' }}" placeholder="ชื่อ..."/>
     </div>
     <div class="col-12">
-        <label for="inputtype" class="form-label">ประเภท</label>
-        <input type="text" class="form-control" name="type" value="{{ isset($animals->type) ? $animals->type : '' }}" placeholder="ประเภท..."/>
-    </div>
-    <div class="col-12">
         <label for="inputspecies" class="form-label">พันธุ์</label>
         <input type="text" class="form-control" name="species" value="{{ isset($animals->species) ? $animals->species : '' }}" placeholder="พันธุ์..."/>
     </div>
@@ -55,4 +51,9 @@
     <div class="col-12">
         <label for="inputowner" class="form-label">เจ้าของ</label>
         <input type="text" class="form-control" name="owner" value="{{ isset($animals->owner) ? $animals->owner : '' }}" placeholder="เจ้าของ..."/>
+    </div>
+    <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}} mb-3">
+        <label for="image" class="control-label">Image</label>
+        <input class="form-control" name="image" type="file" id="image" value="{{ isset($animals->image) ? $animals->image : ''}}" >
+        {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
     </div>
