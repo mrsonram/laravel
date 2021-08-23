@@ -16,6 +16,16 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="portfolio/css/styles.css" rel="stylesheet" />
     </head>
+    <style>
+        @font-face {
+          font-family: FontNongnam;
+          src: url(fonts/FONTNONGNAM.TTF);
+        }
+
+        div, h1, h2, h3, h4, h5, h6 {
+          font-family: FontNongnam;
+        }
+    </style>
     <body>
         @yield('content')
         @include('pet/footer')

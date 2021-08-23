@@ -8,11 +8,11 @@
         <div class="col-sm-3">
             <div class="card">
                 <div class="card-header">
-                    <strong>Manage</strong>
+                    <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">Back</a>
+                        <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
                     </li>
                 </ul>
             </div>

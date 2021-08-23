@@ -1,16 +1,16 @@
 @extends('theme/bootstrap_5')
-@section('title', 'Manage')
+@section('title', 'จัดการข้อมูล (สำหรับผู้ดูแลระบบ)')
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-3">
             <div class="card">
                 <div class="card-header">
-                    <strong>Manage</strong>
+                    <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/create">Create</a>
+                        <a class="card-item" aria-current="page" href="{{ url('/') }}/create">เพิ่มข้อมูล</a>
                     </li>
                 </ul>
               </div>
@@ -20,8 +20,8 @@
                 <div class="container">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
                     <form class="d-flex" action="{{ url('/') }}/manage" method="GET">
-                        <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="{{ $q }}">
-                        <button class="btn btn-primary" type="submit">Search</button>
+                        <input name="q" class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" value="{{ $q }}">
+                        <button class="btn btn-primary" type="submit">ค้นหา</button>
                     </form>
                 </div>
             </nav>

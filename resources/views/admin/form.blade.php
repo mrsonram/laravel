@@ -53,7 +53,7 @@
         <input type="text" class="form-control" name="owner" value="{{ isset($animals->owner) ? $animals->owner : '' }}" placeholder="เจ้าของ..."/>
     </div>
     <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}} mb-3">
-        <label for="image" class="control-label">Image</label>
+        <label for="image" class="control-label">รูปภาพ</label>
         <input class="form-control" name="image" type="file" id="image" value="{{ isset($animals->image) ? $animals->image : ''}}" >
         {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
     </div>

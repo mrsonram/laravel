@@ -1,4 +1,4 @@
-@extends('theme/bootstrap_5')
+@extends('bootstrap/theme')
 @section('title', 'Bootstrap 5')
 @section('content')
     <div class="container">

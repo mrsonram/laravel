@@ -1,5 +1,5 @@
 @extends('theme.bootstrap_5')
-@section('title', 'Create')
+@section('title', 'เพิ่มข้อมูล')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -20,8 +20,8 @@
                         <div class="col-12">
                             @include("admin/form")
 
-                            <button type="submit" class="btn btn-primary">Create</button>
-                            <a href="{{ url('/') }}/manage" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                            <a href="{{ url('/') }}/manage" class="btn btn-secondary">ยกเลิก</a>
                         </div>
                         <div class="col"></div>
                     </div>
