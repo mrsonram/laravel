@@ -14,7 +14,8 @@ class PetController extends Controller
      */
     public function index()
     {
-        return view('pet/index');
+        $animals = Pet::get();
+        return view('pet/index', compact('animals'));
     }
 
     public function news()

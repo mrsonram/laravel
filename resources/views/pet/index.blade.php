@@ -57,6 +57,9 @@
                         <div class="carousel-item active">
                             <div class="container">
                                 <div class="row">
+
+                                    @foreach($animals as $animals)
+                                    @if($animals->count)
                                     <div class="col">
                                         <!-- Pet Info Item 1-->
                                         <div class="card">
@@ -64,14 +67,16 @@
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
-                                                <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
+                                                <img class="img-fluid" src="{{ asset($animals->image) }}" alt="..." />
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-center">Pet Name</h5>
-                                                    <p class="card-text text-center">Pet Details</p>
+                                                    <h5 class="card-title text-center">{{ $animals->name }}</h5>
+                                                    <p class="card-text text-center">{{ $animals->species }}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @endforeach
                                     <div class="col">
                                         <!-- Pet Info Item 2-->
                                         <div class="card">
