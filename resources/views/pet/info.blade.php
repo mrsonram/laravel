@@ -6,7 +6,7 @@
 <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0" span style="font-family: FontNongnam">ข้อมูลสุนัข</h1>
+        <h1 class="masthead-heading text-uppercase mb-0">ข้อมูลสุนัข</h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -14,13 +14,13 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0" span style="font-family: FontNongnam; font-size: 30px">โครงการจัดการปัญหาสุนัข</p>
+        <p class="masthead-subheading font-weight-light mb-0" style="font-size: 30px">โครงการจัดการปัญหาสุนัข</p>
     </div>
 </header>
 <section class="page-section portfolio" id="info">
     <div class="container">
         <!-- Pet Info Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0" span style="font-family: FontNongnam">สุนัขชุมชน</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">สุนัขชุมชน</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pet;
 use Illuminate\Http\Request;
+use App\Models\Tester;
 
-class PetController extends Controller
+class TesterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,15 +14,17 @@ class PetController extends Controller
      */
     public function index()
     {
-        $animals = Pet::get();
-        return view('pet/index', compact('animals'));
+        $animals = Tester::get();
+        return view('test/index', compact('animals'));
     }
 
-    public function news()
+    public function read()
     {
-        return view('pet/news');
+        $animals = Tester::all();
+        return view('test/read')->with([
+            'data' => $animals
+        ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +32,7 @@ class PetController extends Controller
      */
     public function create()
     {
-        //
+        return view('test/create');
     }
 
     /**
@@ -41,7 +43,8 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $animals['name'] = $request->name;
+        Tester::insert($animals);
     }
 
     /**
@@ -52,8 +55,8 @@ class PetController extends Controller
      */
     public function show($id)
     {
-        $animals = Pet::findOrFail($id);
-        return view('pet/show')->with([
+        $animals = Tester::findOrFail($id);
+        return view('test/edit')->with([
             'data' => $animals
         ]);
     }
@@ -66,7 +69,7 @@ class PetController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -78,7 +81,9 @@ class PetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $animals = Tester::findOrFail($id);
+        $animals->name = $request->name;
+        $animals->save();
     }
 
     /**
@@ -89,6 +94,7 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $animals = Tester::findOrFail($id);
+        $animals->delete();
     }
 }

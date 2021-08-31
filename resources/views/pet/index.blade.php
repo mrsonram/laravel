@@ -4,7 +4,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}/pet">โครงการจัดการปัญหาสุนัข</a>
+        <a class="navbar-brand" href="{{ url('/') }}/" style="font-size: 28px">โครงการจัดการปัญหาสุนัข</a>
         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -53,41 +53,35 @@
                 <!-- Carousel-->
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <!-- Carousel Page 1-->
-                        <div class="carousel-item active">
+                        <!-- Carousel -->
+                        @for($i=0;  $i< count($animals); $i+=3)
+                        <div class="carousel-item {{ $i==0 ? "active" : "" }}">
                             <div class="container">
                                 <div class="row">
-
-                                    @foreach($animals as $animals)
-                                    @if($animals->count)
                                     <div class="col">
                                         <!-- Pet Info Item 1-->
                                         <div class="card">
-                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ $animals[$i]->id }})">
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
-                                                <img class="img-fluid" src="{{ asset($animals->image) }}" alt="..." />
+                                                <img class="img-fluid" src="{{ isset($animals[$i]->image) ? asset($animals[$i]->image) : asset('images/background.png') }}" alt="..." />
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-center">{{ $animals->name }}</h5>
-                                                    <p class="card-text text-center">{{ $animals->species }}</p>
+                                                    <h4 class="card-title text-center">{{ $animals[$i]->name }}</h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @endforeach
                                     <div class="col">
                                         <!-- Pet Info Item 2-->
                                         <div class="card">
-                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ $animals[$i+1]->id }})">
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
-                                                <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
+                                                <img class="img-fluid" src="{{ isset($animals[$i+1]->image) ? asset($animals[$i+1]->image) : asset('images/background.png') }}" alt="..." />
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-center">Pet Name</h5>
-                                                    <p class="card-text text-center">Pet Details</p>
+                                                    <h4 class="card-title text-center">{{ $animals[$i+1]->name }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,14 +89,13 @@
                                     <div class="col">
                                         <!-- Pet Info Item 3-->
                                         <div class="card">
-                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ $animals[$i+2]->id }})">
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
-                                                <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
+                                                <img class="img-fluid" src="{{ isset($animals[$i+2]->image) ? asset($animals[$i+2]->image) : asset('images/background.png') }}" alt="..." />
                                                 <div class="card-body">
-                                                    <h5 class="card-title text-center">Pet Name</h5>
-                                                    <p class="card-text text-center">Pet Details</p>
+                                                    <h4 class="card-title text-center">{{ $animals[$i+2]->name }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -110,106 +103,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Carousel Page 2-->
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col">
-                                    <!-- Pet Info Item 4-->
-                                    <div class="card">
-                                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">Pet Name</h5>
-                                                <p class="card-text text-center">Pet Details</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <!-- Pet Info Item 5-->
-                                    <div class="card">
-                                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">Pet Name</h5>
-                                                <p class="card-text text-center">Pet Details</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <!-- Pet Info Item 6-->
-                                    <div class="card">
-                                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">Pet Name</h5>
-                                                <p class="card-text text-center">Pet Details</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Carousel Page 3-->
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col">
-                                    <!-- Pet Info Item 7-->
-                                    <div class="card">
-                                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">Pet Name</h5>
-                                                <p class="card-text text-center">Pet Details</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <!-- Pet Info Item 8-->
-                                    <div class="card">
-                                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">Pet Name</h5>
-                                                <p class="card-text text-center">Pet Details</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <!-- Pet Info Item 9-->
-                                    <div class="card">
-                                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
-                                            </div>
-                                            <img class="img-fluid" src="portfolio/assets/img/pet/info.png" alt="..." />
-                                            <div class="card-body">
-                                                <h5 class="card-title text-center">Pet Name</h5>
-                                                <p class="card-text text-center">Pet Details</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endfor
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -6,7 +6,7 @@
 <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0" span style="font-family: FontNongnam">เกี่ยวกับโครงการจัดการปัญหาสุนัข</h1>
+        <h1 class="masthead-heading text-uppercase mb-0">เกี่ยวกับโครงการจัดการปัญหาสุนัข</h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -14,7 +14,7 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0" span style="font-family: FontNongnam; font-size: 30px">โครงการจัดการปัญหาสุนัข</p>
+        <p class="masthead-subheading font-weight-light mb-0" style="font-size: 30px">โครงการจัดการปัญหาสุนัข</p>
     </div>
 </header>
 @endsection

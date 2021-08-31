@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PetController;
+use App\Http\Controllers\TesterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,8 +61,8 @@ Route::get('/test', function () {
 });
 
 //Pet Project
+Route::get('pet/show/{id}', [PetController::class, 'show']);
 
-Route::get('/pet', 'PetController@index');
 
 Route::get('/news', function () {
     return view('pet/news');
@@ -81,6 +83,8 @@ Route::get('/administrator', function () {
 Route::get('/map', function () {
     return view('pet/map');
 });
+
+Route::get('/pet/{id}', 'PetController@show');
 
 //Admin
 Route::get('/manage', 'AdminController@index');
@@ -104,6 +108,14 @@ Route::get('/post', function () {
 //Manage
 Route::resource('index', 'ManageController');
 
+//Tester
+Route::get('/tester/home',[TesterController::class,'index']);
+Route::get('tester/read',[TesterController::class,'read']);
+Route::get('tester/create',[TesterController::class,'create']);
+Route::get('tester/store',[TesterController::class,'store']);
+Route::get('tester/show/{id}',[TesterController::class,'show']);
+Route::get('tester/update/{id}',[TesterController::class,'update']);
+Route::get('tester/destroy/{id}',[TesterController::class,'destroy']);
 
 //Login
 Auth::routes();

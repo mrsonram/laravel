@@ -40,5 +40,16 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <script>
+            function show(id) {
+                $.get("{{ url('pet/show') }}/" + id, {}, function(data, status) {
+                    $("#modal-title").html('รายละเอียด')
+                    $("#page").html(data);
+                    $("#modal").modal('show');
+                });
+            }
+        </script>
     </body>
 </html>

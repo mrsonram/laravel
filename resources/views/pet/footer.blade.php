@@ -4,8 +4,8 @@
         <div class="row">
             <!-- Footer Location-->
             <div class="col mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4" span style="font-family: FontNongnam">ที่อยู่</h4>
-                <p class="lead mb-0" span style="font-family: FontNongnam">
+                <h4 class="text-uppercase mb-4">ที่อยู่</h4>
+                <p class="lead mb-0">
                     เลขที่ 1 หมู่ 20 ต.คลองหนึ่ง
                     <br />
                     อ.คลองหลวง จ.ปทุมธานี 13180
@@ -13,7 +13,7 @@
             </div>
             <!-- Footer Social Icons-->
             <div class="col mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4" span style="font-family: FontNongnam">ติดตามเพิ่มเติมได้ที่</h4>
+                <h4 class="text-uppercase mb-4">ติดตามเพิ่มเติมได้ที่</h4>
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-instagram"></i></a>
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
@@ -24,5 +24,5 @@
 </footer>
 <!-- Copyright Section-->
 <div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright &copy; VRU Pet Project 2021</small></div>
+    <div class="container"><h4>Copyright VRU Pet Project 2021</h4></div>
 </div>

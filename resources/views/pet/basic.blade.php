@@ -1,6 +1,6 @@
-<!-- Pet Info Modals-->
-        <!-- Pet Info Modal 1-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
+<!-- Modals-->
+        <!-- Modal Info-->
+        <div class="portfolio-modal modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
@@ -8,22 +8,16 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
-                                    <!-- Pet Info Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Info</h2>
+                                    <!-- Modal Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="modal-title"></h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
                                         <div class="divider-custom-icon"><i class="fas fa-paw"></i></div>
                                         <div class="divider-custom-line"></div>
                                     </div>
-                                    <!-- Pet Info Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="admin/assets/img/pet/info.png" alt="..." />
-                                    <!-- Pet Info Modal - Text-->
-                                    <p class="mb-4">Text Info</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <!-- Modal Details-->
+                                    <div id="page" class="p-2"></div>
                                 </div>
                             </div>
                         </div>
@@ -31,6 +25,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Portfolio Modal 2-->
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
             <div class="modal-dialog modal-xl">
@@ -63,6 +58,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Portfolio Modal 3-->
         <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
             <div class="modal-dialog modal-xl">
