@@ -24,7 +24,7 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="{{ asset('portfolio/assets/img/logo.png') }}" alt="..." />
+                <img class="masthead-avatar mb-5" src="{{ asset('images/logo.png') }}" alt="..." />
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">โครงการจัดการปัญหาสุนัข</h1>
                 <!-- Icon Divider-->
@@ -61,13 +61,13 @@
                                     <div class="col">
                                         <!-- Pet Info Item 1-->
                                         <div class="card">
-                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ $animals[$i]->id }})">
+                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ isset($animals[$i]->id) ? $animals[$i]->id : '' }})">
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
                                                 <img class="img-fluid" src="{{ isset($animals[$i]->image) ? asset($animals[$i]->image) : asset('images/background.png') }}" alt="..." />
                                                 <div class="card-body">
-                                                    <h4 class="card-title text-center">{{ $animals[$i]->name }}</h4>
+                                                    <h4 class="card-title text-center">{{ isset($animals[$i]->name) ? $animals[$i]->name : 'ตูบ' }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,13 +75,13 @@
                                     <div class="col">
                                         <!-- Pet Info Item 2-->
                                         <div class="card">
-                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ $animals[$i+1]->id }})">
+                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ isset($animals[$i+1]->id) ? $animals[$i+1]->id : '' }})">
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
                                                 <img class="img-fluid" src="{{ isset($animals[$i+1]->image) ? asset($animals[$i+1]->image) : asset('images/background.png') }}" alt="..." />
                                                 <div class="card-body">
-                                                    <h4 class="card-title text-center">{{ $animals[$i+1]->name }}</h4>
+                                                    <h4 class="card-title text-center">{{ isset($animals[$i+1]->name) ? $animals[$i+1]->name : 'ตูบ' }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,13 +89,13 @@
                                     <div class="col">
                                         <!-- Pet Info Item 3-->
                                         <div class="card">
-                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ $animals[$i+2]->id }})">
+                                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" onClick="show({{ isset($animals[$i+2]->id) ? $animals[$i+2]->id : '' }})">
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
                                                 <img class="img-fluid" src="{{ isset($animals[$i+2]->image) ? asset($animals[$i+2]->image) : asset('images/background.png') }}" alt="..." />
                                                 <div class="card-body">
-                                                    <h4 class="card-title text-center">{{ $animals[$i+2]->name }}</h4>
+                                                    <h4 class="card-title text-center">{{ isset($animals[$i+2]->name) ? $animals[$i+2]->name : 'ตูบ' }}</h4>
                                                 </div>
                                             </div>
                                         </div>

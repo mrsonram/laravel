@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\TesterController;
 use Illuminate\Support\Facades\Route;
@@ -25,51 +26,15 @@ Route::get('/', 'PetController@index');
 //    return '<h1>Test Web</h1>';
 //});
 
-Route::get('/profile', 'ProfileController@index');
-
-Route::get('/profile/create', 'ProfileController@create');
-
-Route::get('/profile/{id}', 'ProfileController@show');
-
-//Employee
-Route::get('/employee', 'EmployeeController@index');
-
-Route::get("/employee/create", "EmployeeController@create");
-
-Route::post("/employee", "EmployeeController@store");
-
-Route::get('/employee/{id}', 'EmployeeController@show');
-
-Route::get("/employee/{id}/edit", "EmployeeController@edit");
-
-Route::put("/employee/{id}", "EmployeeController@update");
-
-Route::delete('/employee/{id}', 'EmployeeController@destroy');
-
-//Position
-Route::get('/position', 'PositionController@index');
-
-Route::get('/position/{id}', 'PositionController@show');
-
-//Boostrap
-Route::get('/bootstrap', function () {
-    return view('bootstrap/index');
-});
-
-Route::get('/test', function () {
-    return view('bootstrap/test');
-});
-
 //Pet Project
-Route::get('pet/show/{id}', [PetController::class, 'show']);
+Route::resource('/', 'PetController');
 
+Route::get('info', [PetController::class, 'info']);
+
+Route::get('pet/show/{id}', [PetController::class, 'show']);
 
 Route::get('/news', function () {
     return view('pet/news');
-});
-
-Route::get('/info', function () {
-    return view('pet/info');
 });
 
 Route::get('/about', function () {
@@ -83,8 +48,6 @@ Route::get('/administrator', function () {
 Route::get('/map', function () {
     return view('pet/map');
 });
-
-Route::get('/pet/{id}', 'PetController@show');
 
 //Admin
 Route::get('/manage', 'AdminController@index');
@@ -101,21 +64,18 @@ Route::put('/manage/{id}', 'AdminController@update');
 
 Route::delete('/manage/{id}', 'AdminController@destroy');
 
-Route::get('/post', function () {
-    return view('admin/dashboard');
-});
+//Contact
+Route::resource('contact', 'ContactController');
+
+Route::get('/contact', 'ContactController@index');
+
+Route::delete('/contact/{id}', 'ContactController@destroy');
 
 //Manage
 Route::resource('index', 'ManageController');
 
-//Tester
-Route::get('/tester/home',[TesterController::class,'index']);
-Route::get('tester/read',[TesterController::class,'read']);
-Route::get('tester/create',[TesterController::class,'create']);
-Route::get('tester/store',[TesterController::class,'store']);
-Route::get('tester/show/{id}',[TesterController::class,'show']);
-Route::get('tester/update/{id}',[TesterController::class,'update']);
-Route::get('tester/destroy/{id}',[TesterController::class,'destroy']);
+//PC (Contact Save Tester)
+Route::resource('/pc', 'PCController');
 
 //Login
 Auth::routes();

@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class Position extends Model
+class PC extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
-    protected $table = "positions";
+    protected $table = 'contacts';
     //ชื่อคอลัมน์ในฐานข้อมูลที่อนุญาติให้แก้ไขข้อมูล
-    protected $fillable = ["position_name"];
+    protected $fillable = ['name', 'email', 'title', 'message'];
     //Primary Key
-    protected $primaryKey = "position_id";
+    protected $primaryKey = 'id';
+    protected $hidden;
 }

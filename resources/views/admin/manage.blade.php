@@ -12,6 +12,9 @@
                     <li class="list-group-item">
                         <a class="card-item" aria-current="page" href="{{ url('/') }}/create">เพิ่มข้อมูล</a>
                     </li>
+                    <li class="list-group-item">
+                        <a class="card-item" aria-current="page" href="{{ url('/') }}/contact">ข้อความ</a>
+                    </li>
                 </ul>
               </div>
         </div>
@@ -42,15 +45,15 @@
                 </thead>
                 @foreach($animals as $animals)
                     <tr>
-                        <td scope="col">{{ $animals->name }}</td>
-                        <td scope="col">{{ $animals->species }}</td>
-                        <td scope="col">{{ $animals->marking }}</td>
-                        <td scope="col">{{ $animals->gender }}</td>
-                        <td scope="col">{{ $animals->collar }}</td>
-                        <td scope="col">{{ $animals->age }}</td>
-                        <td scope="col">{{ $animals->status }}</td>
-                        <td scope="col">{{ $animals->vet }}</td>
-                        <td scope="col">{{ $animals->owner }}</td>
+                        <td scope="col">{{ isset($animals->name) ? $animals->name : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->species) ? $animals->species : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->marking) ? $animals->marking : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->gender) ? $animals->gender : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->collar) ? $animals->collar : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->age) ? $animals->age : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->status) ? $animals->status : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->vet) ? $animals->vet : 'ไม่ทราบ' }}</td>
+                        <td scope="col">{{ isset($animals->owner) ? $animals->owner : 'ไม่ทราบ' }}</td>
                         <td>
                         <div class="d-grid gap-2 d-md-block">
                             <a class="btn btn-info btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}">View</a>

@@ -25,48 +25,48 @@
                             <strong>รายละเอียด</strong>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <img src="{{ asset($animals->image) }}" class="card-img-top" alt="...">
+                            <img src="{{ isset($animals->image) ? asset($animals->image) : asset('images/background.png') }}" class="card-img-top" alt="...">
                         </ul>
                         <div class="card-body">
                             <p class="card-text">
                                 <strong>ID : </strong>
-                                {{ $animals->id }}
+                                {{ isset($animals->id) ? $animals->id : '0000' }}
                             </p>
                             <p class="card-text">
                                 <strong>ชื่อ : </strong>
-                                {{ $animals->name }}
+                                {{ isset($animals->name) ? $animals->name : 'ไม่ทราบ' }}
                             </p>
                             <p class="card-text">
                                 <strong>พันธุ์ : </strong>
-                                {{ $animals->species }}
+                                {{ isset($animals->species) ? $animals->species : 'ไม่ทราบ' }}
                             </p>
                             <p class="card-text">
                                 <strong>ลาย : </strong>
-                                {{ $animals->marking }}
+                                {{ isset($animals->marking) ? $animals->marking : 'ไม่ทราบ' }}
                             </p>
                             <p class="card-text">
                                 <strong>เพศ : </strong>
-                                {{ $animals->gender }}
+                                {{ isset($animals->gender) ? $animals->gender : 'ไม่ทราบ' }}
                             </p>
                             <p class="card-text">
                                 <strong>ปลอกคอสี : </strong>
-                                {{ $animals->collar }}
+                                {{ isset($animals->collar) ? $animals->collar : 'ไม่ทราบ' }}
                             </p>
                             <p class="card-text">
                                 <strong>อายุ : </strong>
-                                {{ $animals->age }} ปี
+                                {{ isset($animals->age) ? $animals->age : 'ไม่ทราบอายุ' }} ปี
                             </p>
                             <p class="card-text">
                                 <strong>สถานะ : </strong>
-                                {{ $animals->status }}
+                                {{ isset($animals->status) ? $animals->status : 'ไม่ทราบ' }}
                             </p>
                             <p class="card-text">
                                 <strong>สถานะทำหมัน : </strong>
-                                {{ $animals->vet }}
+                                {{ isset($animals->vet) ? $animals->vet : 'ไม่ทราบ' }}
                             </p>
                             <p class="card-text">
                                 <strong>เจ้าของ : </strong>
-                                {{ $animals->owner }}
+                                {{ isset($animals->owner) ? $animals->owner : 'ไม่ทราบ' }}
                             </p>
                         </div>
                     </div>

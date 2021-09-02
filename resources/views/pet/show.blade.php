@@ -2,34 +2,36 @@
 <!-- Pet Info Modal - Text-->
 <div class="card-body">
     <h4 class="card-text">
-        ชื่อ : {{ $data->name }}
+        ชื่อ : {{ isset($data->name) ? $data->name : 'ไม่ทราบ' }}
     </h4>
     <h4 class="card-text">
-        พันธุ์ : {{ $data->species }}
+        พันธุ์ : {{ isset($data->species) ? $data->species : 'ไม่ทราบ' }}
     </h4>
     <h4 class="card-text">
-        ลาย : {{ $data->marking }}
+        ลาย : {{ isset($data->marking) ? $data->marking : 'ไม่ทราบ' }}
     </h4>
     <h4 class="card-text">
-        เพศ : {{ $data->gender }}
+        เพศ : {{ isset($data->gender) ? $data->gender : 'ไม่ทราบ' }}
     </h4>
     <h4 class="card-text">
-        ปลอกคอสี : {{ $data->collar }}
+        ปลอกคอสี : {{ isset($data->collar) ? $data->collar : 'ไม่ทราบ' }}
     </h4>
     <h4 class="card-text">
-        อายุ : {{ $data->age }} ปี
+        อายุ : {{ isset($data->age) ? $data->age : 'ไม่ทราบ' }} ปี
     </h4>
     <h4 class="card-text">
-        สถานะ : {{ $data->status }}
+        สถานะ : {{ isset($data->status) ? $data->status : 'ไม่ทราบ' }}
     </h4>
     <h4 class="card-text">
-        สถานะทำหมัน : {{ $data->vet }}
+        สถานะทำหมัน : {{ isset($data->vet) ? $data->vet : 'ไม่ทราบ' }}
     </h4>
     <h4 class="card-text">
-        เจ้าของ : {{ $data->owner }}
+        เจ้าของ : {{ isset($data->owner) ? $data->owner : 'ไม่ทราบ' }}
     </h4>
 </div>
+<div class="d-grid gap-2 col-6 mx-auto">
 <button class="btn btn-primary" data-bs-dismiss="modal" style="font-size: 28px">
     <i class="fas fa-times fa-fw"></i>
         ปิด
 </button>
+</div>

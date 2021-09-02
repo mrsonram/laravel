@@ -2,32 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pet;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
-class PetController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        $animals = Pet::get();
-        return view('pet/index', compact('animals'));
+        $this->middleware('auth');
     }
 
-    public function info()
+    public function index(Request $request)
     {
-        $animals = Pet::get()
-                        ->sortBy("name");
-        return view('pet/info', compact('animals'));
-    }
+        $search = $request->input('search');
 
-    public function news()
-    {
-        return view('pet/news');
+        if(!empty($search))
+        {
+            $contacts = Contact::where("name", "like", "%{$search}%")
+                            ->orWhere("email", "like", "%{$search}%")
+                            ->orWhere("title", "like", "%{$search}%")
+                            ->orWhere("message", "like", "%{$search}%")
+                            ->get();;
+        }
+        else
+        {
+            $contacts = Contact::get();
+        }
+        return view('admin/contact', compact('contacts', 'search'));
     }
 
     /**
@@ -48,7 +54,22 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'title' => 'required',
+            'message' => 'required',
+        ]);
+
+        $data = new Contact;
+
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->title = $request->input('title');
+        $data->message = $request->input('message');
+        $data->save();
+
+        return redirect('/')->with('success', 'ส่งข้อมูลแล้ว');
     }
 
     /**
@@ -59,10 +80,7 @@ class PetController extends Controller
      */
     public function show($id)
     {
-        $animals = Pet::findOrFail($id);
-        return view('pet/show')->with([
-            'data' => $animals
-        ]);
+        //
     }
 
     /**
@@ -96,6 +114,8 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contact::destroy($id);
+
+        return redirect('contact');
     }
 }

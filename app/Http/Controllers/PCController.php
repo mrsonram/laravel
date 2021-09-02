@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Tester;
+use App\Models\PC;
 
-class TesterController extends Controller
+class PCController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +14,9 @@ class TesterController extends Controller
      */
     public function index()
     {
-        $animals = Tester::get();
-        return view('test/index', compact('animals'));
+        return view('pc/index');
     }
 
-    public function read()
-    {
-        $animals = Tester::all();
-        return view('test/read')->with([
-            'data' => $animals
-        ]);
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +24,7 @@ class TesterController extends Controller
      */
     public function create()
     {
-        return view('test/create');
+        //
     }
 
     /**
@@ -43,8 +35,22 @@ class TesterController extends Controller
      */
     public function store(Request $request)
     {
-        $animals['name'] = $request->name;
-        Tester::insert($animals);
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'title' => 'required',
+            'message' => 'required',
+        ]);
+
+        $data = new PC;
+
+        $data->name = $request->input('name');
+        $data->email = $request->input('email');
+        $data->title = $request->input('title');
+        $data->message = $request->input('message');
+        $data->save();
+
+        return redirect('/pc')->with('success', 'Data Save');
     }
 
     /**
@@ -55,10 +61,7 @@ class TesterController extends Controller
      */
     public function show($id)
     {
-        $animals = Tester::findOrFail($id);
-        return view('test/edit')->with([
-            'data' => $animals
-        ]);
+        //
     }
 
     /**
@@ -69,7 +72,7 @@ class TesterController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -81,9 +84,7 @@ class TesterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $animals = Tester::findOrFail($id);
-        $animals->name = $request->name;
-        $animals->save();
+        //
     }
 
     /**
@@ -94,7 +95,6 @@ class TesterController extends Controller
      */
     public function destroy($id)
     {
-        $animals = Tester::findOrFail($id);
-        $animals->delete();
+        //
     }
 }

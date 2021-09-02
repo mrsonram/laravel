@@ -38,9 +38,9 @@
                                     <div class="col-12">
                                         @include("admin/form")
                                         <script>
-                                            document.querySelector("#inputcollar").value = "{{ isset($animals->collar) ? $animals->collar : '' }}";
-                                            document.querySelector("#inputstatus").value = "{{ isset($animals->status) ? $animals->status : '' }}";
-                                            document.querySelector("#inputvet").value = "{{ isset($animals->vet) ? $animals->vet : '' }}";
+                                            document.querySelector("#inputcollar").value = "{{ isset($animals->collar) ? $animals->collar : 'ตัวเลือก' }}";
+                                            document.querySelector("#inputstatus").value = "{{ isset($animals->status) ? $animals->status : 'ตัวเลือก' }}";
+                                            document.querySelector("#inputvet").value = "{{ isset($animals->vet) ? $animals->vet : 'ตัวเลือก' }}";
                                         </script>
                                         <button type="submit" class="btn btn-primary">อัพเดต</button>
                                     </div>
