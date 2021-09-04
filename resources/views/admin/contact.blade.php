@@ -43,7 +43,7 @@
                     <td scope="col">{{ isset($contact->message) ? $contact->message : "ไม่มีข้อมูล" }}</td>
                     <td>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-info btn-sm" href="{{ url('/') }}/contact/">View</a>
+                            <a class="btn btn-info btn-sm" href="{{ url('/') }}/contact/{{ $contact->id }}">View</a>
                             <form action="{{ url('/') }}/contact/{{ $contact->id }}" method="POST" onsubmit="validate();" style="display:inline">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
