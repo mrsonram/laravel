@@ -57,3 +57,4 @@
         <input class="form-control" name="image" type="file" id="image" value="{{ isset($animals->image) ? $animals->image : ''}}" >
         {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
     </div>
+</form>

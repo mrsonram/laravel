@@ -31,11 +31,12 @@ Route::resource('/', 'PetController');
 
 Route::get('info', [PetController::class, 'info']);
 
+Route::get('news', [PetController::class, 'news']);
+
 Route::get('pet/show/{id}', [PetController::class, 'show']);
 
-Route::get('/news', function () {
-    return view('pet/news');
-});
+Route::get('news/show/{id}', [PetController::class, 'message']);
+
 
 Route::get('/about', function () {
     return view('pet/about');
@@ -70,6 +71,20 @@ Route::resource('contact', 'ContactController');
 Route::get('/contact', 'ContactController@index');
 
 Route::delete('/contact/{id}', 'ContactController@destroy');
+
+//News
+Route::get('/message', 'NewsController@index');
+
+Route::get('/message/create', 'NewsController@create');
+
+Route::post('/message', 'NewsController@store');
+
+Route::get('/message/{id}', 'NewsController@show');
+
+Route::get('/message/{id}/edit', 'NewsController@edit');
+
+Route::put('/message/{id}', 'NewsController@update');
+
 
 //Manage
 Route::resource('index', 'ManageController');

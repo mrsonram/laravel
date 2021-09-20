@@ -2,34 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pet;
-use App\Models\News;
 use Illuminate\Http\Request;
+use App\Models\News;
 
-class PetController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        $animals = Pet::get();
-        return view('pet/index', compact('animals'));
+        $this->middleware('auth');
     }
 
-    public function info()
+    public function index(Request $request)
     {
-        $animals = Pet::get()
-                        ->sortBy("name");
-        return view('pet/info', compact('animals'));
-    }
+        $search = $request->input('search');
 
-    public function news()
-    {
-        $news = News::get();
-        return view('pet/news', compact('news'));
+        if(!empty($search))
+        {
+            $news = News::where("title", "like", "%{$search}%")
+                            ->orWhere("subtitle", "like", "%{$search}%")
+                            ->orWhere("detail", "like", "%{$search}%")
+                            ->get();;
+        }
+        else
+        {
+            $news = News::get();
+        }
+        return view('admin/news', compact('news', 'search'));
     }
 
     /**
@@ -39,7 +42,8 @@ class PetController extends Controller
      */
     public function create()
     {
-        //
+        $news = News::get();
+        return view("admin/news/create", compact('news'));
     }
 
     /**
@@ -50,7 +54,12 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        News::insert([
+            'title'=>$request->title,
+            'subtitle'=>$request->subtitle,
+            'detail'=>$request->detail,
+        ]);
+        return redirect('message');
     }
 
     /**
@@ -61,18 +70,8 @@ class PetController extends Controller
      */
     public function show($id)
     {
-        $animals = Pet::findOrFail($id);
-        return view('pet/show')->with([
-            'data' => $animals
-        ]);
-    }
-
-    public function message($id)
-    {
         $news = News::findOrFail($id);
-        return view('pet/news/show')->with([
-            'data' => $news
-        ]);
+        return view('admin/news/show', compact('news'));
     }
 
     /**
@@ -83,7 +82,8 @@ class PetController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = News::findOrFail($id);
+        return view('admin/news/edit', compact('news'));
     }
 
     /**
@@ -95,7 +95,12 @@ class PetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        News::find($id)->update([
+            'title'=>$request->title,
+            'subtitle'=>$request->subtitle,
+            'detail'=>$request->detail,
+        ]);
+        return redirect('message');
     }
 
     /**
@@ -106,6 +111,8 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        News::destroy($id);
+
+        return redirect('Message');
     }
 }

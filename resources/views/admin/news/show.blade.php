@@ -1,6 +1,6 @@
 @extends('theme.bootstrap_5')
 @section('title')
-    {{ $contact->name }}
+    {{ $news->title }}
 @endsection
 @section('content')
 <div class="container">
@@ -11,11 +11,8 @@
                     <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/contact">กลับหน้าหลัก</a>
-                    </li>-->
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/contact">กลับหน้าหลัก</a>
+                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/message">กลับหน้าหลัก</a>
                     </div>
                 </ul>
             </div>
@@ -29,20 +26,16 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                <strong>ชื่อ : </strong>
-                                {{ isset($contact->name) ? $contact->name : 'ไม่มีข้อมูล' }}
-                            </p>
-                            <p class="card-text">
-                                <strong>Email : </strong>
-                                {{ isset($contact->email) ? $contact->email : 'ไม่มีข้อมูล' }}
-                            </p>
-                            <p class="card-text">
                                 <strong>เรื่อง : </strong>
-                                {{ isset($contact->title) ? $contact->title : 'ไม่มีข้อมูล' }}
+                                {{ isset($news->title) ? $news->title : 'ไม่มีข้อมูล' }}
+                            </p>
+                            <p class="card-text">
+                                <strong>หัวข้อย่อย : </strong>
+                                {{ isset($news->subtitle) ? $news->subtitle : 'ไม่มีข้อมูล' }}
                             </p>
                             <p class="card-text">
                                 <strong>รายละเอียด : </strong>
-                                {{ isset($contact->message) ? $contact->message : 'ไม่ทราบ' }}
+                                {{ isset($news->detail) ? $news->detail : 'ไม่มีข้อมูล' }}
                             </p>
                         </div>
                     </div>

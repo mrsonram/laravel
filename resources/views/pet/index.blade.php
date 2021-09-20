@@ -34,7 +34,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0" style="font-size: 30px">คนปลอดภัย เพราะสุนัขปลอดโรค</p>
+                <p class="masthead-subheading font-weight-light mb-0" style="font-size: 38px">คนปลอดภัย เพราะสุนัขปลอดโรค</p>
             </div>
         </header>
         <!-- Pet Info Section-->

@@ -11,9 +11,12 @@
                     <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
+                    <!--<li class="list-group-item">
                         <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
-                    </li>
+                    </li>-->
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
+                    </div>
                 </ul>
             </div>
         </div>

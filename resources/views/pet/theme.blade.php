@@ -30,6 +30,7 @@
         @yield('content')
         @include('pet/footer')
         @include('pet/basic')
+        @include('pet/news/modal')
         @include('pet/contact')
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -45,6 +46,14 @@
         <script>
             function show(id) {
                 $.get("{{ url('pet/show') }}/" + id, {}, function(data, status) {
+                    $("#modal-title").html('รายละเอียด')
+                    $("#page").html(data);
+                    $("#modal").modal('show');
+                });
+            }
+
+            function message(id) {
+                $.get("{{ url('news/show') }}/" + id, {}, function(data, status) {
                     $("#modal-title").html('รายละเอียด')
                     $("#page").html(data);
                     $("#modal").modal('show');

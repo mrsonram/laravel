@@ -9,12 +9,21 @@
                     <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
+                    <!--<li class="list-group-item">
                         <a class="card-item" aria-current="page" href="{{ url('/') }}/create">เพิ่มข้อมูล</a>
                     </li>
                     <li class="list-group-item">
                         <a class="card-item" aria-current="page" href="{{ url('/') }}/contact">ข้อความ</a>
                     </li>
+                    <li class="list-group-item">
+                        <a class="card-item" aria-current="page" href="">ข่าวสาร</a>
+                    </li>-->
+
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/create">เพิ่มข้อมูล</a>
+                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/contact">ข้อความ</a>
+                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/message">ข่าวสาร</a>
+                    </div>
                 </ul>
               </div>
         </div>
