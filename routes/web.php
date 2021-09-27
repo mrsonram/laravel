@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\TesterController;
+use App\Http\Controllers\AutoAddressController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,6 +92,9 @@ Route::resource('index', 'ManageController');
 
 //PC (Contact Save Tester)
 Route::resource('/pc', 'PCController');
+
+//AutoAddressAPI
+Route::get('/api', [AutoAddressController::class, 'googleAutoAddress']);
 
 //Login
 Auth::routes();

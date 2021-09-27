@@ -7,8 +7,8 @@ function initMap() {
     'postal_code',
   ];
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 13,
-    center: { lat: 14.133772471305727, lng: 100.61666116898675 },
+    zoom: 10,
+    center: { lat: 14.133471522262647, lng: 100.61629693843862 },
     mapTypeControl: false,
     fullscreenControl: true,
     zoomControl: true,

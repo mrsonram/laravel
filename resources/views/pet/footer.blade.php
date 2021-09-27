@@ -24,5 +24,5 @@
 </footer>
 <!-- Copyright Section-->
 <div class="copyright py-4 text-center text-white">
-    <div class="container"><h4>Copyright VRU Pet Project 2021</h4></div>
+    <div class="container"><h4>Copyright VRU VET Project 2021</h4></div>
 </div>
