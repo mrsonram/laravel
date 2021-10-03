@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="{{ asset('/google_map/css/style.css') }}"/>
     <script src="{{ asset('/google_map/js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
         #map{
             height: 700px;
@@ -39,8 +40,7 @@
             }
 
             //Google Map
-            var map = new
-            google.maps.Map(document.getElementById('map'), option);
+            var map = new google.maps.Map(document.getElementById('map'), option);
 
             //Marker
             //var marker = new google.maps.Marker({
@@ -49,16 +49,17 @@
                 //icon:'link'
             //});
 
-            addMarker({lat:14.133641162498503, lng:100.6157895197617});
-            addMarker({lat:14.133078209247032, lng:100.61598728127554});
-
-            function addMarker(coords){
-                var Marker = new google.maps.Marker({
-                    position : coords,
-                    map:map//,
+            //addMarker({lat:14.133641162498503, lng:100.6157895197617});
+            //addMarker({lat:14.133078209247032, lng:100.61598728127554});
+            //function addMarker(coords){
+            //    var Marker = new google.maps.Marker({
+            //        position : coords,
+            //        map:map//,
                     //icon:'link icon'
-                });
-            }
+            //    });
+            //}
+
+
         }
     </script>
 </body>

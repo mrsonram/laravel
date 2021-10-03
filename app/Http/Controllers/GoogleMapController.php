@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pet;
-use App\Models\News;
 use Illuminate\Http\Request;
+use App\Models\GoogleMap;
+use App\Models\Pet;
 use Illuminate\Support\Facades\DB;
 
-class PetController extends Controller
+class GoogleMapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,41 +16,22 @@ class PetController extends Controller
      */
     public function index()
     {
-        $animals = Pet::get();
-        return view('pet/index', compact('animals'));
-    }
+        $maps = GoogleMap::all();
 
-    public function test()
-    {
-        $animals = Pet::get();
-        return view('test/map', compact('animals'));
-    }
+        $dataMap  = Array();
+        $dataMap['type']='FeatureCollection';
+        $dataMap['features']=array();
+        foreach($maps as $value){
+                $feaures = array();
+                $feaures['type']='Feature';
+                $geometry = array("type"=>"Point","coordinates"=>[$value->lng, $value->lat]);
+                $feaures['geometry']=$geometry;
+                $properties=array('name'=>$value->title,"city"=>$value->description);
+                $feaures['properties']= $properties;
+                array_push($dataMap['features'],$feaures);
 
-    public function gmaps()
-    {
-    	$locations = DB::table('animals')->get();
-    	return view('gmaps',compact('locations'));
-    }
-
-    public function info()
-    {
-        $animals = Pet::get()
-                        ->sortBy("name");
-        return view('pet/info', compact('animals'));
-    }
-
-    public function news()
-    {
-        $news = News::get();
-        return view('pet/news', compact('news'));
-    }
-
-    public function map()
-    {
-        //$animals = Pet::get();
-        //return view('pet/map', compact('animals'));
-        $locations = DB::table('animals')->get();
-    	return view('pet/map',compact('locations'));
+       }
+        return view('pages/google-map')->with('dataArray',json_encode($dataMap));
     }
 
     /**
@@ -71,7 +52,15 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        GoogleMap::create($request->all());
+        return redirect('/maps')->with('success',"Add map success!");
+    }
+
+    public function add(Request $request)
+    {
+        GoogleMap::create($request->all());
+        return redirect('/google/add')->with('success',"Add map success!");
     }
 
     /**
@@ -82,18 +71,8 @@ class PetController extends Controller
      */
     public function show($id)
     {
-        $animals = Pet::findOrFail($id);
-        return view('pet/show')->with([
-            'data' => $animals
-        ]);
-    }
-
-    public function message($id)
-    {
-        $news = News::findOrFail($id);
-        return view('pet/news/show')->with([
-            'data' => $news
-        ]);
+        $animals = GoogleMap::find($id);
+        return view('google/view', compact('animals'));
     }
 
     /**

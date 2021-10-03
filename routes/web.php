@@ -4,7 +4,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\TesterController;
 use App\Http\Controllers\AutoAddressController;
+use App\Models\Pet;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,8 @@ Route::get('info', [PetController::class, 'info']);
 
 Route::get('news', [PetController::class, 'news']);
 
+Route::get('map', [PetController::class, 'map']);
+
 Route::get('pet/show/{id}', [PetController::class, 'show']);
 
 Route::get('news/show/{id}', [PetController::class, 'message']);
@@ -47,9 +51,9 @@ Route::get('/administrator', function () {
     return view('admin/login');
 });
 
-Route::get('/map', function () {
-    return view('pet/map');
-});
+//Route::get('/map', function () {
+//    return view('pet/map');
+//});
 
 //Admin
 Route::get('/manage', 'AdminController@index');
@@ -95,6 +99,28 @@ Route::resource('/pc', 'PCController');
 
 //AutoAddressAPI
 Route::get('/api', [AutoAddressController::class, 'googleAutoAddress']);
+
+
+Route::get('gmaps', 'PetController@gmaps');
+
+//Route::prefix('google-map')->group(function () {
+    Route::get('/maps','GoogleMapController@index')->name('index');
+    Route::post('/marks','GoogleMapController@store')->name('store');
+//});
+
+//Test Add Location
+Route::get('google/add', function () {
+    return view('google/app');
+});
+
+Route::post('/google/add', 'GoogleMapController@add');
+
+Route::get('/google/{id}', 'GoogleMapController@show');
+
+
+//Test
+Route::get('/test/map', 'PetController@test');
+
 
 //Login
 Auth::routes();
