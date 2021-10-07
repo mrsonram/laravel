@@ -121,7 +121,16 @@ Route::get('/google/{id}', 'GoogleMapController@show');
 //Test
 Route::get('/test/map', 'PetController@test');
 
+Route::resource('location', 'LocationController');
 
+Route::get('/beta/test', function(){
+    return redirect('location');
+});
+
+Route::get('ver-mapa', [
+    'uses' => 'MapController@getMap',
+    'as' => 'ver-mapa'
+]);
 //Login
 Auth::routes();
 

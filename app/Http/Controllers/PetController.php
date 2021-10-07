@@ -47,10 +47,10 @@ class PetController extends Controller
 
     public function map()
     {
-        //$animals = Pet::get();
-        //return view('pet/map', compact('animals'));
-        $locations = DB::table('animals')->get();
-    	return view('pet/map',compact('locations'));
+        $animals = Pet::get();
+        return view('pet/map', compact('animals'));
+        //$locations = DB::table('animals')->get();
+    	//return view('pet/map',compact('locations'));
     }
 
     /**

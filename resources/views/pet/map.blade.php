@@ -50,16 +50,33 @@
             //});
 
             //addMarker({lat:14.133641162498503, lng:100.6157895197617});
-            //addMarker({lat:14.133078209247032, lng:100.61598728127554});
-            //function addMarker(coords){
-            //    var Marker = new google.maps.Marker({
-            //        position : coords,
-            //        map:map//,
+            addMarker({
+                coords:{lat:14.133641162498503, lng:100.6157895197617}
+            });
+
+            addMarker({coords:{lat:14.133078209247032, lng:100.61598728127554}});
+            function addMarker(props){
+                var Marker = new google.maps.Marker({
+                    position : props.coords,
+                    map:map,
                     //icon:'link icon'
-            //    });
-            //}
+                });
 
+                if(props.iconImage){
 
+                    marker.setIcon(props.iconImage);
+                }
+
+                if(props.content){
+                    var infoWindow = new google.maps.InfoWindow({
+                        content:props.content
+                    });
+
+                    marker.addListener('click', function(){
+                        infoWindow.open(map, marker);
+                    });
+                }
+            }
         }
     </script>
 </body>
