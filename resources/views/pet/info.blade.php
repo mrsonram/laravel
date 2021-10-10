@@ -14,7 +14,7 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0" style="font-size: 30px">โครงการจัดการปัญหาสุนัข</p>
+        <p class="masthead-subheading font-weight-light mb-0"><h1>โครงการจัดการปัญหาสุนัข</h1></p>
     </div>
 </header>
 <section class="page-section portfolio" id="info">
@@ -33,7 +33,7 @@
                 @foreach($animals as $animals)
                 <div class="col">
                     <div class="card text-center" style="width: 18rem;">
-                        <img src="{{ isset($animals->image) ? asset($animals->image) : asset('images/background.png') }}" class="card-img-top" alt="...">
+                        <img src="{{ isset($animals->image) ? asset($animals->image) : asset('source/background.png') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                         <h5 class="card-title" style="font-size: 24px">{{ isset($animals->name) ? $animals->name : "ตูบ" }}</h5>
                         <div class="d-grid gap-2">

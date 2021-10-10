@@ -25,7 +25,20 @@
         div, h1, h2, h3, h4, h5, h6 {
           font-family: FontNongnam;
         }
+
+        .card-img-top {
+        width: 100%;
+        height: 16vw;
+        object-fit: cover;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 20vw;
+            object-fit: cover;
+        }
     </style>
+
     <body>
         @yield('content')
         @include('pet/footer')

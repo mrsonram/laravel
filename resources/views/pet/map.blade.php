@@ -25,7 +25,7 @@
             <div class="divider-custom-line"></div>
         </div>
         <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0" style="font-size: 30px">โครงการจัดการปัญหาสุนัข</p>
+        <p class="masthead-subheading font-weight-light mb-0"><h1>โครงการจัดการปัญหาสุนัข</h1></p>
     </div>
 </header>
     <div class="map" id="map"></div>
