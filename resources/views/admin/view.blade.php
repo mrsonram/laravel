@@ -1,4 +1,4 @@
-@extends('theme.bootstrap_5')
+@extends('theme.mdb')
 @section('title')
     {{ $contact->name }}
 @endsection
@@ -6,24 +6,14 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    <strong>เมนู</strong>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/contact">กลับหน้าหลัก</a>
-                    </li>-->
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/contact">กลับหน้าหลัก</a>
-                    </div>
-                </ul>
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/contact"><i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
         <div class="col-sm-9">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-header">
                             <strong>รายละเอียด</strong>
                         </div>
@@ -44,6 +34,11 @@
                                 <strong>รายละเอียด : </strong>
                                 {{ isset($contact->message) ? $contact->message : 'ไม่ทราบ' }}
                             </p>
+                            <form action="{{ url('/') }}/contact/{{ $contact->id }}" method="POST" onsubmit="validate();" style="display:inline">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button class="btn btn-danger btn-lg" type="submit">ลบ</button>
+                            </form>
                         </div>
                     </div>
                 </div>

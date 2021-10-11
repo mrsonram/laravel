@@ -1,4 +1,4 @@
-@extends('theme.bootstrap_5')
+@extends('theme.mdb')
 @section('title')
     {{ $animals->name }}
 @endsection
@@ -6,27 +6,51 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="card">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/manage"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <!--<div class="card">
                 <div class="card-header">
                     <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
-                    </li>-->
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
+                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/manage">ย้อนกลับ</a>
                     </div>
                 </ul>
-            </div>
+            </div>-->
         </div>
         <div class="col-sm-9">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">
-                            <strong>รายละเอียด</strong>
-                        </div>
+                            <!-- Navbar -->
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <div class="container-fluid">
+                                <strong class="navbar-brand me-2">รายละเอียด</strong>
+                                <!-- Toggle button -->
+                                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <!-- Collapsible wrapper -->
+                                <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                                    <!-- Left links -->
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+                                    <!-- Right links -->
+                                    <div class="d-flex align-items-center">
+                                    <a class="btn btn-warning me-2" data-mdb-ripple-color="dark" href="{{ url('/') }}/manage/{{ $animals->id }}/edit">แก้ไข</a>
+                                    <form action="{{ url('/') }}/manage/{{ $animals->id }}" method="POST" onsubmit="validate();" style="display:inline">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-danger" data-mdb-ripple-color="dark" type="submit">ลบ</button>
+                                    </form>
+                                    </div>
+                                </div>
+                                <!-- Collapsible wrapper -->
+                                </div>
+                            </nav>
+                            <!-- Navbar -->
                         <ul class="list-group list-group-flush">
                             <img src="{{ isset($animals->image) ? asset($animals->image) : asset('images/background.png') }}" class="card-img-top" alt="...">
                         </ul>
@@ -70,6 +94,10 @@
                             <p class="card-text">
                                 <strong>เจ้าของ : </strong>
                                 {{ isset($animals->owner) ? $animals->owner : 'ไม่ทราบ' }}
+                            </p>
+                            <p class="card-text">
+                                <strong>สถานที่ : </strong>
+                                {{ isset($animals->location) ? $animals->location : 'ไม่ทราบ' }}
                             </p>
                         </div>
                     </div>

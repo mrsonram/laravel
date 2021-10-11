@@ -33,6 +33,7 @@ class AdminController extends Controller
                             ->orWhere("status", "like", "%{$q}%")
                             ->orWhere("vet", "like", "%{$q}%")
                             ->orWhere("owner", "like", "%{$q}%")
+                            ->orWhere("location", "like", "%{$q}%")
                             ->get();;
         }
         else
@@ -64,20 +65,18 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $img = $request->file('image');
-        if($img !='')
-        {
+        if ($img !='') {
             $img_gen = hexdec(uniqid());
 
-                $img_exe = strtolower($img->getClientOriginalExtension());
-                $img_name = $img_gen.'.'.$img_exe;
+            $img_exe = strtolower($img->getClientOriginalExtension());
+            $img_name = $img_gen.'.'.$img_exe;
 
-                $save = 'images/';
-                $path = $save.$img_name;
-        }
+            $save = 'images/';
+            $path = $save.$img_name;
 
-        Admin::insert([
+
+            Admin::insert([
             'name'=>$request->name,
-            'type'=>$request->type,
             'species'=>$request->species,
             'marking'=>$request->marking,
             'gender'=>$request->gender,
@@ -86,10 +85,35 @@ class AdminController extends Controller
             'status'=>$request->status,
             'vet'=>$request->vet,
             'owner'=>$request->owner,
+            'location'=>$request->location,
+            'lat'=>$request->lat,
+            'lng'=>$request->lng,
             'image'=>$path,
-        ]);
-        $img->move($save, $img_name);
-        return redirect('manage');
+            ]);
+
+            $img->move($save, $img_name);
+            return redirect('manage');
+        }
+
+        else
+        {
+            Admin::insert([
+            'name'=>$request->name,
+            'species'=>$request->species,
+            'marking'=>$request->marking,
+            'gender'=>$request->gender,
+            'collar'=>$request->collar,
+            'age'=>$request->age,
+            'status'=>$request->status,
+            'vet'=>$request->vet,
+            'owner'=>$request->owner,
+            'location'=>$request->location,
+            'lat'=>$request->lat,
+            'lng'=>$request->lng,
+            ]);
+
+            return redirect('manage');
+        }
     }
 
     /**
@@ -152,6 +176,9 @@ class AdminController extends Controller
                     'vet'=>$request->vet,
                     'owner'=>$request->owner,
                     'image'=>$path,
+                    'location'=>$request->location,
+                    'lat'=>$request->lat,
+                    'lng'=>$request->lng,
                 ]);
                 $img->move($save, $img_name);
                 return redirect('manage');
@@ -170,6 +197,9 @@ class AdminController extends Controller
                     'status'=>$request->status,
                     'vet'=>$request->vet,
                     'owner'=>$request->owner,
+                    'location'=>$request->location,
+                    'lat'=>$request->lat,
+                    'lng'=>$request->lng,
                 ]);
                 return redirect('manage');
             }

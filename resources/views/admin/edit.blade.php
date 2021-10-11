@@ -1,4 +1,4 @@
-@extends('theme.bootstrap_5')
+@extends('theme.mdb')
 @section('title')
     {{ $animals->name }}
 @endsection
@@ -6,19 +6,19 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="card">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/manage"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <!--<div class="card">
                 <div class="card-header">
                     <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
-                    </li>-->
                     <div class="list-group" id="list-tab" role="tablist">
                         <a class="list-group-item list-group-item-action" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
                     </div>
                 </ul>
-            </div>
+            </div>-->
         </div>
         <div class="col-sm-9">
             <div class="row">
@@ -41,11 +41,14 @@
                                     <div class="col-12">
                                         @include("admin/form")
                                         <script>
+                                            document.querySelector("#inputgender").value = "{{ isset($animals->gender) ? $animals->gender : 'ตัวเลือก' }}";
                                             document.querySelector("#inputcollar").value = "{{ isset($animals->collar) ? $animals->collar : 'ตัวเลือก' }}";
                                             document.querySelector("#inputstatus").value = "{{ isset($animals->status) ? $animals->status : 'ตัวเลือก' }}";
                                             document.querySelector("#inputvet").value = "{{ isset($animals->vet) ? $animals->vet : 'ตัวเลือก' }}";
                                         </script>
-                                        <button type="submit" class="btn btn-primary">อัพเดต</button>
+                                        <div class="d-grid gap-2">
+                                            <button type="submit" class="btn btn-success btn-lg" data-mdb-ripple-color="dark">อัพเดต</button>
+                                        </div>
                                     </div>
                                     <div class="col"></div>
                                   </div>

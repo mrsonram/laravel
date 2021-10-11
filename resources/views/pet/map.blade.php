@@ -49,17 +49,28 @@
                 //icon:'link'
             //});
 
-            //addMarker({lat:14.133641162498503, lng:100.6157895197617});
-            addMarker({
-                coords:{lat:14.133641162498503, lng:100.6157895197617}
-            });
+            @foreach($animals as $animals)
+            @if (isset($animals->lat))
+                addMarker({
+                    coords:{lat:{{ $animals->lat }}, lng:{{ $animals->lng }}}
 
-            addMarker({coords:{lat:14.133078209247032, lng:100.61598728127554}});
+                });
+            @endif
+            @endforeach
+            //addMarker({coords:{lat:14.133078209247032, lng:100.61598728127554}});
             function addMarker(props){
-                var Marker = new google.maps.Marker({
+                var marker = new google.maps.Marker({
                     position : props.coords,
-                    map:map,
-                    //icon:'link icon'
+                    map:map//,
+                    //icon:'{{ asset('source/icon.png') }}'
+                });
+
+                var infowindow = new google.maps.InfoWindow({
+                content:"{{ $animals->name }}"
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
                 });
 
                 if(props.iconImage){
@@ -67,16 +78,18 @@
                     marker.setIcon(props.iconImage);
                 }
 
-                if(props.content){
-                    var infoWindow = new google.maps.InfoWindow({
-                        content:props.content
-                    });
+                //if(props.content){
+                    //var infoWindow = new google.maps.InfoWindow({
+                        //content: "{{ $animals->name }}"//props.content
+                    //});
 
-                    marker.addListener('click', function(){
-                        infoWindow.open(map, marker);
-                    });
-                }
+                    //marker.addListener('click', function(){
+                        //infoWindow.open(map, marker);
+                    //});
+
+                //}
             }
+
         }
     </script>
 </body>

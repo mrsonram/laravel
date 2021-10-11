@@ -1,42 +1,33 @@
-@extends('theme/bootstrap_5')
+@extends('theme/mdb')
 @section('title', 'ข้อความ (สำหรับผู้ดูแลระบบ)')
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <div class="card">
-                <div class="card-header">
-                    <strong>เมนู</strong>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">หน้าแรก</a>
-                    </li>-->
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/manage">หน้าแรก</a>
-
-                    </div>
-                </ul>
-              </div>
+        <div class="col-2">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/home"><i class="fas fa-arrow-left"></i></a>
+            </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <nav class="navbar navbar-light bg-white">
                 <div class="container">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
                     <form class="d-flex" action="{{ url('/') }}/contact" method="GET">
-                        <input name="search" class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" value="{{ $search }}">
-                        <button class="btn btn-primary" type="submit">ค้นหา</button>
+                        <input name="search" class="form-control rounded" type="search" placeholder="ค้นหา" aria-label="Search" value="{{ $search }}">
+                        <span class="input-group-text border-0" id="search-addon">
+                            <i class="fas fa-search"></i>
+                        </span>
                     </form>
                 </div>
             </nav>
-            <table class="table table-hover">
+            <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">ชื่อ</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">เรื่อง</th>
-                        <th scope="col">รายละเอียด</th>
-                        <th scope="col">จัดการ</th>
+                        <th scope="col"><strong>ชื่อ</strong></th>
+                        <th scope="col"><strong>Email</strong></th>
+                        <th scope="col"><strong>เรื่อง</strong></th>
+                        <th scope="col"><strong>รายละเอียด</strong></th>
+                        <th scope="col"><strong>จัดการ</strong></th>
                     </tr>
                 </thead>
                 @foreach($contacts as $contact)
@@ -47,12 +38,7 @@
                     <td scope="col">{{ isset($contact->message) ? $contact->message : "ไม่มีข้อมูล" }}</td>
                     <td>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-info btn-sm" href="{{ url('/') }}/contact/{{ $contact->id }}">View</a>
-                            <form action="{{ url('/') }}/contact/{{ $contact->id }}" method="POST" onsubmit="validate();" style="display:inline">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                            </form>
+                            <a class="btn btn-outline-info" data-mdb-ripple-color="dark" href="{{ url('/') }}/contact/{{ $contact->id }}"><i class="fas fa-info"></i></a>
                         </div>
                         </td>
                     </tr>

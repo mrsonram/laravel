@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>@yield('title')</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="portfolio/assets/icon.png" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('source/icon.png') }}"/>
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->

@@ -1,4 +1,4 @@
-@extends('theme.bootstrap_5')
+@extends('theme/mdb')
 @section('title')
     {{ $news->title }}
 @endsection
@@ -6,15 +6,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    <strong>เมนู</strong>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/message">กลับหน้าหลัก</a>
-                    </div>
-                </ul>
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/message"><i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
         <div class="col-sm-9">
@@ -37,7 +30,29 @@
                                 <strong>รายละเอียด : </strong>
                                 {{ isset($news->detail) ? $news->detail : 'ไม่มีข้อมูล' }}
                             </p>
+
+                            <a class="btn btn-warning btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/message/{{ $news->id }}/edit">แก้ไข</a>
+                            <form action="{{ url('/') }}/message/{{ $news->id }}" method="POST" onsubmit="validate();" style="display:inline">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button class="btn btn-danger btn-lg" data-mdb-ripple-color="dark" type="submit">ลบ</button>
+                            </form>
                         </div>
+                        <script>
+                            function validate()
+                            {
+                                //SUBMIT
+                                var wantToDelete= confirm('Are you sure to delete this item?');
+                                if(wantToDelete)
+                                    {
+                                        this.submit();
+                                    }
+                                else
+                                    {
+                                        this.close();
+                                    }
+                            }
+                        </script>
                     </div>
                 </div>
             </div>

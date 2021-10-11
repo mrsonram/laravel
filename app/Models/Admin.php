@@ -14,6 +14,6 @@ class Admin extends Model
     //ชื่อตารางในฐานข้อมูล
     protected $table = "animals";
     //ชื่อคอลัมน์ในฐานข้อมูลที่อนุญาติให้แก้ไขข้อมูล
-    protected $fillable = ["name", "species", "marking", "gender", "collar", "age", "status", "vet", "owner", "image"];
+    protected $fillable = ["name", "species", "marking", "gender", "collar", "age", "status", "vet", "owner", "image", "location", "lat", "lng"];
 
 }

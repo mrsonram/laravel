@@ -1,4 +1,4 @@
-<img class="img-fluid rounded mb-5" src="{{ isset($data->image) ? asset($data->image) : asset('images/background.png') }}" alt="..." />
+<img class="img-fluid rounded mb-5" src="{{ isset($data->image) ? asset($data->image) : asset('source/background.png') }}" alt="..." />
 <!-- Pet Info Modal - Text-->
 <div class="card-body">
     <h4 class="card-text">
@@ -27,6 +27,9 @@
     </h4>
     <h4 class="card-text">
         เจ้าของ : {{ isset($data->owner) ? $data->owner : 'ไม่ทราบ' }}
+    </h4>
+    <h4 class="card-text">
+        สถานที่ชอบอยู่ : {{ isset($data->location) ? $data->location : 'ไม่ทราบ' }}
     </h4>
 </div>
 <div class="d-grid gap-2 col-6 mx-auto">

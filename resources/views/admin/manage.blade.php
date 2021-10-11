@@ -1,43 +1,39 @@
-@extends('theme/bootstrap_5')
+@extends('theme/mdb')
 @section('title', 'จัดการข้อมูล (สำหรับผู้ดูแลระบบ)')
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <div class="card">
+        <div class="col-2">
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/home"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <!--<div class="card bg-light">
                 <div class="card-header">
                     <strong>เมนู</strong>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/create">เพิ่มข้อมูล</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/contact">ข้อความ</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="">ข่าวสาร</a>
-                    </li>-->
-
                     <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/create">เพิ่มข้อมูล</a>
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/contact">ข้อความ</a>
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/message">ข่าวสาร</a>
+                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/home">กลับหน้าแรก</a>
                     </div>
                 </ul>
-              </div>
+              </div>-->
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <nav class="navbar navbar-light bg-white">
                 <div class="container">
+                    <a class="btn btn-dark px-3" href="{{ url('/') }}/create" role="button">
+                        <i class="fas fa-plus-circle fa-lg"></i>
+                    </a>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
                     <form class="d-flex" action="{{ url('/') }}/manage" method="GET">
-                        <input name="q" class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" value="{{ $q }}">
-                        <button class="btn btn-primary" type="submit">ค้นหา</button>
+                        <input name="q" class="form-control rounded" type="search" placeholder="ค้นหา" aria-label="Search" value="{{ $q }}">
+                        <span class="input-group-text border-0" id="search-addon">
+                            <i class="fas fa-search"></i>
+                        </span>
                     </form>
                 </div>
             </nav>
-            <table class="table table-hover">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">ชื่อ</th>
@@ -65,13 +61,13 @@
                         <td scope="col">{{ isset($animals->owner) ? $animals->owner : 'ไม่ทราบ' }}</td>
                         <td>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-info btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}">View</a>
-                            <a class="btn btn-warning btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}/edit">Edit</a>
+                            <a class="btn btn-outline-info" data-mdb-ripple-color="dark" href="{{ url('/') }}/manage/{{ $animals->id }}"><i class="fas fa-info"></i></a>
+                            <!--<a class="btn btn-warning btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}/edit">Edit</a>
                             <form action="{{ url('/') }}/manage/{{ $animals->id }}" method="POST" onsubmit="validate();" style="display:inline">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                            </form>
+                            </form>-->
                         </div>
                         </td>
                     </tr>

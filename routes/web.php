@@ -90,6 +90,8 @@ Route::get('/message/{id}/edit', 'NewsController@edit');
 
 Route::put('/message/{id}', 'NewsController@update');
 
+Route::delete('/message/{id}', 'NewsController@destroy');
+
 
 //Manage
 Route::resource('index', 'ManageController');
@@ -117,10 +119,6 @@ Route::post('/google/add', 'GoogleMapController@add');
 
 Route::get('/google/{id}', 'GoogleMapController@show');
 
-
-//Test
-Route::get('/test/map', 'PetController@test');
-
 Route::resource('location', 'LocationController');
 
 Route::get('/beta/test', function(){
@@ -131,9 +129,10 @@ Route::get('ver-mapa', [
     'uses' => 'MapController@getMap',
     'as' => 'ver-mapa'
 ]);
+
 //Login
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/manage', [App\Http\Controllers\AdminController::class, 'index'])->name('manage');
+//Route::get('/manage', [App\Http\Controllers\AdminController::class, 'index'])->name('manage');

@@ -20,12 +20,6 @@ class PetController extends Controller
         return view('pet/index', compact('animals'));
     }
 
-    public function test()
-    {
-        $animals = Pet::get();
-        return view('test/map', compact('animals'));
-    }
-
     public function gmaps()
     {
     	$locations = DB::table('animals')->get();

@@ -1,4 +1,4 @@
-@extends('theme.bootstrap_5')
+@extends('theme.mdb')
 @section('title', 'เพิ่มข้อมูล')
 @section('content')
 <div class="container">
@@ -20,8 +20,8 @@
                         <div class="col-12">
                             @include("admin/form")
 
-                            <button type="submit" class="btn btn-primary">บันทึก</button>
-                            <a href="{{ url('/') }}/manage" class="btn btn-secondary">ยกเลิก</a>
+                            <button type="submit" class="btn btn-success btn-lg">บันทึก</button>
+                            <a href="{{ url('/') }}/manage" class="btn btn-light btn-lg">ยกเลิก</a>
                         </div>
                         <div class="col"></div>
                     </div>

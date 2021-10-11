@@ -113,6 +113,12 @@ class NewsController extends Controller
     {
         News::destroy($id);
 
-        return redirect('Message');
+        return redirect('message');
+
+
+
+        //$news = News::find($id);
+        //$news->delete();
+        //return redirect('message')->with('ลบ','ลบข้อมูลข่าวสารเรียบร้อยแล้ว');
     }
 }

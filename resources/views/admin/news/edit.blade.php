@@ -1,4 +1,4 @@
-@extends('theme.bootstrap_5')
+@extends('theme/mdb')
 @section('title')
     {{ $news->title }}
 @endsection
@@ -6,18 +6,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    <strong>เมนู</strong>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item">
-                        <a class="card-item" aria-current="page" href="{{ url('/') }}/manage">กลับหน้าหลัก</a>
-                    </li>-->
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/message">กลับหน้าหลัก</a>
-                    </div>
-                </ul>
+            <div class="d-grid gap-2">
+                <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/message"><i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
         <div class="col-sm-9">
@@ -38,7 +28,7 @@
                                     <div class="col-12">
                                         @include("admin/news/form")
 
-                                        <button type="submit" class="btn btn-primary">อัพเดต</button>
+                                        <button type="submit" class="btn btn-success btn-lg" data-mdb-ripple-color="dark">อัพเดต</button>
                                     </div>
                                     <div class="col"></div>
                                   </div>
