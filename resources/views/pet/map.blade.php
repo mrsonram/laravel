@@ -28,66 +28,54 @@
         <p class="masthead-subheading font-weight-light mb-0"><h1>โครงการจัดการปัญหาสุนัข</h1></p>
     </div>
 </header>
-    <div class="map" id="map"></div>
+    <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaAcT7gUSkl38sCZazn96anMb6ivCLXYA&libraries=places&callback=initMap&channel=GMPSB_addressselection_v1_cABC" async defer></script>
 
     <script>
         function initMap(){
-            //Map Option
+
             var option = {
                 zoom : 18,
-                center : {lat:14.133710046968305, lng:100.617101050143}
+                center : {lat:14.13353837742699, lng:100.6142455376813}
             }
 
-            //Google Map
             var map = new google.maps.Map(document.getElementById('map'), option);
 
-            //Marker
-            //var marker = new google.maps.Marker({
-            //    position : {lat:14.133641162498503,lng:100.6157895197617},
-            //    map:map,
-                //icon:'link'
-            //});
+            var icon = {url:'source/location.png',
+                scaledSize: new google.maps.Size(50, 50),
+                origin: new google.maps.Point(0,0),
+                anchor: new google.maps.Point(0, 0)
+            };
 
             @foreach($animals as $animals)
             @if (isset($animals->lat))
                 addMarker({
-                    coords:{lat:{{ $animals->lat }}, lng:{{ $animals->lng }}}
-
+                    coords:{lat:{{ $animals->lat }}, lng:{{ $animals->lng }}},
+                    content:'<h4>{{ $animals->name }}</h4>'
                 });
             @endif
             @endforeach
-            //addMarker({coords:{lat:14.133078209247032, lng:100.61598728127554}});
+
             function addMarker(props){
                 var marker = new google.maps.Marker({
                     position : props.coords,
-                    map:map//,
-                    //icon:'{{ asset('source/icon.png') }}'
-                });
-
-                var infowindow = new google.maps.InfoWindow({
-                content:"{{ $animals->name }}"
-                });
-
-                google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker);
+                    map:map,
+                    icon:icon,
                 });
 
                 if(props.iconImage){
-
                     marker.setIcon(props.iconImage);
                 }
 
-                //if(props.content){
-                    //var infoWindow = new google.maps.InfoWindow({
-                        //content: "{{ $animals->name }}"//props.content
-                    //});
+                if(props.content){
+                    var infoWindow = new google.maps.InfoWindow({
+                        content:props.content
+                    });
 
-                    //marker.addListener('click', function(){
-                        //infoWindow.open(map, marker);
-                    //});
-
-                //}
+                    marker.addListener('click', function(){
+                        infoWindow.open(map, marker);
+                    });
+                }
             }
 
         }
