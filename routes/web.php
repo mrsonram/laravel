@@ -25,11 +25,7 @@ use Symfony\Component\Console\Input\Input;
 
 Route::get('/', 'PetController@index');
 
-//Route::get('/home', function () {
-//    return '<h1>Test Web</h1>';
-//});
-
-//Pet Project
+//VRU VET Project 2021
 Route::resource('/', 'PetController');
 
 Route::get('info', [PetController::class, 'info']);
@@ -42,18 +38,9 @@ Route::get('pet/show/{id}', [PetController::class, 'show']);
 
 Route::get('news/show/{id}', [PetController::class, 'message']);
 
-
 Route::get('/about', function () {
     return view('pet/about');
 });
-
-Route::get('/administrator', function () {
-    return view('admin/login');
-});
-
-//Route::get('/map', function () {
-//    return view('pet/map');
-//});
 
 //Admin
 Route::get('/manage', 'AdminController@index');
@@ -92,24 +79,6 @@ Route::put('/message/{id}', 'NewsController@update');
 
 Route::delete('/message/{id}', 'NewsController@destroy');
 
-
-//Manage
-Route::resource('index', 'ManageController');
-
-//PC (Contact Save Tester)
-Route::resource('/pc', 'PCController');
-
-//AutoAddressAPI
-Route::get('/api', [AutoAddressController::class, 'googleAutoAddress']);
-
-
-Route::get('gmaps', 'PetController@gmaps');
-
-//Route::prefix('google-map')->group(function () {
-    Route::get('/maps','GoogleMapController@index')->name('index');
-    Route::post('/marks','GoogleMapController@store')->name('store');
-//});
-
 //Test Add Location
 Route::get('google/add', function () {
     return view('google/app');
@@ -119,20 +88,7 @@ Route::post('/google/add', 'GoogleMapController@add');
 
 Route::get('/google/{id}', 'GoogleMapController@show');
 
-Route::resource('location', 'LocationController');
-
-Route::get('/beta/test', function(){
-    return redirect('location');
-});
-
-Route::get('ver-mapa', [
-    'uses' => 'MapController@getMap',
-    'as' => 'ver-mapa'
-]);
-
 //Login
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Route::get('/manage', [App\Http\Controllers\AdminController::class, 'index'])->name('manage');
