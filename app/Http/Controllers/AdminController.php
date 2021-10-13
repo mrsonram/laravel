@@ -21,25 +21,22 @@ class AdminController extends Controller
     {
         $q = $request->input('q');
 
-        if(!empty($q))
-        {
+        if (!empty($q)) {
             $animals = Admin::where("name", "like", "%{$q}%")
-                            ->orWhere("type", "like", "%{$q}%")
-                            ->orWhere("species", "like", "%{$q}%")
-                            ->orWhere("marking", "like", "%{$q}%")
-                            ->orWhere("gender", "like", "%{$q}%")
-                            ->orWhere("collar", "like", "%{$q}%")
-                            ->orWhere("age", "like", "%{$q}%")
-                            ->orWhere("status", "like", "%{$q}%")
-                            ->orWhere("vet", "like", "%{$q}%")
-                            ->orWhere("owner", "like", "%{$q}%")
-                            ->orWhere("location", "like", "%{$q}%")
-                            ->get();;
-        }
-        else
-        {
+                ->orWhere("type", "like", "%{$q}%")
+                ->orWhere("species", "like", "%{$q}%")
+                ->orWhere("marking", "like", "%{$q}%")
+                ->orWhere("gender", "like", "%{$q}%")
+                ->orWhere("collar", "like", "%{$q}%")
+                ->orWhere("age", "like", "%{$q}%")
+                ->orWhere("status", "like", "%{$q}%")
+                ->orWhere("vet", "like", "%{$q}%")
+                ->orWhere("owner", "like", "%{$q}%")
+                ->orWhere("location", "like", "%{$q}%")
+                ->get();;
+        } else {
             $animals = Admin::get()
-                            ->sortBy("name");
+                ->sortBy("name");
         }
 
         return view('admin/dogs/dog', compact('animals', 'q'));
@@ -64,56 +61,15 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $img = $request->file('image');
-        if ($img !='') {
-            $img_gen = hexdec(uniqid());
-
-            $img_exe = strtolower($img->getClientOriginalExtension());
-            $img_name = $img_gen.'.'.$img_exe;
-
-            $save = 'images/';
-            $path = $save.$img_name;
-
-
-            Admin::insert([
-            'name'=>$request->name,
-            'species'=>$request->species,
-            'marking'=>$request->marking,
-            'gender'=>$request->gender,
-            'collar'=>$request->collar,
-            'age'=>$request->age,
-            'status'=>$request->status,
-            'vet'=>$request->vet,
-            'owner'=>$request->owner,
-            'location'=>$request->location,
-            'lat'=>$request->lat,
-            'lng'=>$request->lng,
-            'image'=>$path,
-            ]);
-
-            $img->move($save, $img_name);
-            return redirect('dog');
+        $requestData = $request->all();
+        if ($request->hasFile('image')) {
+            $requestData['image'] = $request->file('image')
+                ->store('images', 'public');
         }
 
-        else
-        {
-            Admin::insert([
-            'name'=>$request->name,
-            'species'=>$request->species,
-            'marking'=>$request->marking,
-            'gender'=>$request->gender,
-            'collar'=>$request->collar,
-            'age'=>$request->age,
-            'status'=>$request->status,
-            'vet'=>$request->vet,
-            'owner'=>$request->owner,
-            'location'=>$request->location,
-            'lat'=>$request->lat,
-            'lng'=>$request->lng,
-            ]);
+        Admin::create($requestData);
 
-            return redirect('dog');
-        }
+        return redirect('dog')->with('flash_message', 'Book added!');
     }
 
     /**
@@ -157,52 +113,49 @@ class AdminController extends Controller
 
         //return redirect('manage');
         $img = $request->file('image');
-            if ($img){
-                $img_gen = hexdec(uniqid());
-                $img_exe = strtolower($img->getClientOriginalExtension());
-                $img_name = $img_gen.'.'.$img_exe;
-                $save = 'images/';
-                $path = $save.$img_name;
+        if ($img) {
+            $img_gen = hexdec(uniqid());
+            $img_exe = strtolower($img->getClientOriginalExtension());
+            $img_name = $img_gen . '.' . $img_exe;
+            $save = 'images/';
+            $path = $save . $img_name;
 
-                Admin::find($id)->update([
-                    'name'=>$request->name,
-                    'type'=>$request->type,
-                    'species'=>$request->species,
-                    'marking'=>$request->marking,
-                    'gender'=>$request->gender,
-                    'collar'=>$request->collar,
-                    'age'=>$request->age,
-                    'status'=>$request->status,
-                    'vet'=>$request->vet,
-                    'owner'=>$request->owner,
-                    'image'=>$path,
-                    'location'=>$request->location,
-                    'lat'=>$request->lat,
-                    'lng'=>$request->lng,
-                ]);
-                $img->move($save, $img_name);
-                return redirect('dog');
-            }
-
-            else
-            {
-                Admin::find($id)->update([
-                    'name'=>$request->name,
-                    'type'=>$request->type,
-                    'species'=>$request->species,
-                    'marking'=>$request->marking,
-                    'gender'=>$request->gender,
-                    'collar'=>$request->collar,
-                    'age'=>$request->age,
-                    'status'=>$request->status,
-                    'vet'=>$request->vet,
-                    'owner'=>$request->owner,
-                    'location'=>$request->location,
-                    'lat'=>$request->lat,
-                    'lng'=>$request->lng,
-                ]);
-                return redirect('dog');
-            }
+            Admin::find($id)->update([
+                'name' => $request->name,
+                'type' => $request->type,
+                'species' => $request->species,
+                'marking' => $request->marking,
+                'gender' => $request->gender,
+                'collar' => $request->collar,
+                'age' => $request->age,
+                'status' => $request->status,
+                'vet' => $request->vet,
+                'owner' => $request->owner,
+                'image' => $path,
+                'location' => $request->location,
+                'lat' => $request->lat,
+                'lng' => $request->lng,
+            ]);
+            $img->move($save, $img_name);
+            return redirect('dog');
+        } else {
+            Admin::find($id)->update([
+                'name' => $request->name,
+                'type' => $request->type,
+                'species' => $request->species,
+                'marking' => $request->marking,
+                'gender' => $request->gender,
+                'collar' => $request->collar,
+                'age' => $request->age,
+                'status' => $request->status,
+                'vet' => $request->vet,
+                'owner' => $request->owner,
+                'location' => $request->location,
+                'lat' => $request->lat,
+                'lng' => $request->lng,
+            ]);
+            return redirect('dog');
+        }
     }
 
     /**

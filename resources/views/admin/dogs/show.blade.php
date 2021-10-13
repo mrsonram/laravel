@@ -58,7 +58,7 @@
                             </nav>
                             <!-- Navbar -->
                             <ul class="list-group list-group-flush">
-                                <img src="{{ isset($animals->image) ? asset($animals->image) : asset('images/background.png') }}"
+                                <img src="{{ isset($animals->image) ? asset('storage/'.$animals->image) : asset('source/background.png') }}"
                                     class="card-img-top" alt="...">
                             </ul>
                             <div class="card-body">

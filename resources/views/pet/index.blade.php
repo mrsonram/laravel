@@ -65,7 +65,7 @@
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
-                                                <img class="img-fluid card-img-top" src="{{ isset($animals[$i]->image) ? asset($animals[$i]->image) : asset('source/background.png') }}" alt="..." />
+                                                <img class="img-fluid card-img-top" src="{{ isset($animals[$i]->image) ? asset('storage/'.$animals[$i]->image) : asset('source/background.png') }}" alt="..." />
                                                 <div class="card-body">
                                                     <h4 class="card-title text-center">{{ isset($animals[$i]->name) ? $animals[$i]->name : 'ตูบ' }}</h4>
                                                 </div>
@@ -79,7 +79,7 @@
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
-                                                <img class="img-fluid card-img-top" src="{{ isset($animals[$i+1]->image) ? asset($animals[$i+1]->image) : asset('source/background.png') }}" alt="..." />
+                                                <img class="img-fluid card-img-top" src="{{ isset($animals[$i+1]->image) ? asset('storage/'.$animals[$i+1]->image) : asset('source/background.png') }}" alt="..." />
                                                 <div class="card-body">
                                                     <h4 class="card-title text-center">{{ isset($animals[$i+1]->name) ? $animals[$i+1]->name : 'ตูบ' }}</h4>
                                                 </div>
@@ -93,7 +93,7 @@
                                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-info fa-3x"></i></div>
                                                 </div>
-                                                <img class="img-fluid card-img-top" src="{{ isset($animals[$i+2]->image) ? asset($animals[$i+2]->image) : asset('source/background.png') }}" alt="..." />
+                                                <img class="img-fluid card-img-top" src="{{ isset($animals[$i+2]->image) ? asset('storage/'.$animals[$i+2]->image) : asset('source/background.png') }}" alt="..." />
                                                 <div class="card-body">
                                                     <h4 class="card-title text-center">{{ isset($animals[$i+2]->name) ? $animals[$i+2]->name : 'ตูบ' }}</h4>
                                                 </div>
