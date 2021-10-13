@@ -43,7 +43,7 @@ Route::get('/about', function () {
 });
 
 //Admin
-Route::get('/manage', 'AdminController@index');
+Route::get('/dog', 'AdminController@index');
 
 Route::get('/create', 'AdminController@create');
 

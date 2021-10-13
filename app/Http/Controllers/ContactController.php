@@ -33,7 +33,7 @@ class ContactController extends Controller
         {
             $contacts = Contact::get();
         }
-        return view('admin/contact', compact('contacts', 'search'));
+        return view('admin/contacts/contact', compact('contacts', 'search'));
     }
 
     /**
@@ -81,7 +81,7 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = Contact::findOrFail($id);
-        return view('admin/view', compact('contact'));
+        return view('admin/contacts/view', compact('contact'));
     }
 
     /**

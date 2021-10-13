@@ -42,7 +42,7 @@ class AdminController extends Controller
                             ->sortBy("name");
         }
 
-        return view('admin/manage', compact('animals', 'q'));
+        return view('admin/dogs/dog', compact('animals', 'q'));
     }
 
     /**
@@ -53,7 +53,7 @@ class AdminController extends Controller
     public function create()
     {
         $animals = Admin::get();
-        return view("admin/create", compact('animals'));
+        return view('admin/dogs/create', compact('animals'));
     }
 
     /**
@@ -92,7 +92,7 @@ class AdminController extends Controller
             ]);
 
             $img->move($save, $img_name);
-            return redirect('manage');
+            return redirect('dog');
         }
 
         else
@@ -112,7 +112,7 @@ class AdminController extends Controller
             'lng'=>$request->lng,
             ]);
 
-            return redirect('manage');
+            return redirect('dog');
         }
     }
 
@@ -125,7 +125,7 @@ class AdminController extends Controller
     public function show($id)
     {
         $animals = Admin::findOrFail($id);
-        return view('admin/show', compact('animals'));
+        return view('admin/dogs/show', compact('animals'));
     }
 
     /**
@@ -137,7 +137,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $animals = Admin::findOrFail($id);
-        return view('admin/edit', compact('animals'));
+        return view('admin/dogs/edit', compact('animals'));
     }
 
     /**
@@ -181,7 +181,7 @@ class AdminController extends Controller
                     'lng'=>$request->lng,
                 ]);
                 $img->move($save, $img_name);
-                return redirect('manage');
+                return redirect('dog');
             }
 
             else
@@ -201,7 +201,7 @@ class AdminController extends Controller
                     'lat'=>$request->lat,
                     'lng'=>$request->lng,
                 ]);
-                return redirect('manage');
+                return redirect('dog');
             }
     }
 
@@ -215,6 +215,6 @@ class AdminController extends Controller
     {
         Admin::destroy($id);
 
-        return redirect('manage');
+        return redirect('dog');
     }
 }

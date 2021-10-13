@@ -9,7 +9,7 @@
                     <div class="card-img-overlay">
                         <h2 class="card-title fw-bold">จัดการข้อมูลสุนัข</h2>
                     </div>
-                    <a href="{{ url('/') }}/manage">
+                    <a href="{{ url('/') }}/dog">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                     </a>
                 </div>

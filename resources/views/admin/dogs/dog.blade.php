@@ -7,16 +7,6 @@
             <div class="d-grid gap-2">
                 <a class="btn btn-outline-dark btn-lg" data-mdb-ripple-color="dark" href="{{ url('/') }}/home"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <!--<div class="card bg-light">
-                <div class="card-header">
-                    <strong>เมนู</strong>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action" href="{{ url('/') }}/home">กลับหน้าแรก</a>
-                    </div>
-                </ul>
-              </div>-->
         </div>
         <div class="col-10">
             <nav class="navbar navbar-light bg-white">
@@ -25,7 +15,7 @@
                         <i class="fas fa-plus-circle fa-lg"></i>
                     </a>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                    <form class="d-flex" action="{{ url('/') }}/manage" method="GET">
+                    <form class="d-flex" action="{{ url('/') }}/dog" method="GET">
                         <input name="q" class="form-control rounded" type="search" placeholder="ค้นหา" aria-label="Search" value="{{ $q }}">
                         <span class="input-group-text border-0" id="search-addon">
                             <i class="fas fa-search"></i>
@@ -61,29 +51,12 @@
                         <td scope="col">{{ isset($animals->owner) ? $animals->owner : 'ไม่ทราบ' }}</td>
                         <td>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-outline-info" data-mdb-ripple-color="dark" href="{{ url('/') }}/manage/{{ $animals->id }}"><i class="fas fa-info"></i></a>
-                            <!--<a class="btn btn-warning btn-sm" href="{{ url('/') }}/manage/{{ $animals->id }}/edit">Edit</a>
-                            <form action="{{ url('/') }}/manage/{{ $animals->id }}" method="POST" onsubmit="validate();" style="display:inline">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                            </form>-->
+                            <a class="btn btn-outline-info" data-mdb-ripple-color="dark" href="{{ url('/') }}/dog/{{ $animals->id }}"><i class="fas fa-info"></i></a>
                         </div>
                         </td>
                     </tr>
                 @endforeach
             </table>
-            <script>
-                function validate()
-                {
-                    //SUBMIT
-                    var wantToDelete= confirm('Are you sure to delete this item?');
-                    if(wantToDelete)
-                        {
-                            this.submit();
-                        }
-                }
-            </script>
         </div>
       </div>
 </div>
