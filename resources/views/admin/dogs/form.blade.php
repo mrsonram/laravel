@@ -96,7 +96,7 @@
     <label for="map">แผนที่</label>
     <input type="text" class="form-control input-sm" id="search"> -->
     <div id="map"></div>
-</div>
+<!--</div>-->
 <div class="col-6">
     <label for="lat" class="form-label">ละติจูด</label>
     <input type="text" class="form-control input-sm" name="lat" id="lat"

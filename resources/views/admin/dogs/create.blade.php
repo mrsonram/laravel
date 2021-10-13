@@ -18,8 +18,10 @@
                             @include("admin/dogs/form")
 
                             <div class="col-12">
-                            <button class="btn btn-success btn-lg" data-mdb-ripple-color="dark" type="submit">บันทึก</button>
-                            <a href="{{ url('/') }}/dog" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">ยกเลิก</a>
+                                <button class="btn btn-success btn-lg" data-mdb-ripple-color="dark"
+                                    type="submit">บันทึก</button>
+                                <a href="{{ url('/') }}/dog" class="btn btn-light btn-lg"
+                                    data-mdb-ripple-color="dark">ยกเลิก</a>
                             </div>
                         </form>
                     </div>
