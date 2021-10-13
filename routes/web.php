@@ -47,15 +47,15 @@ Route::get('/dog', 'AdminController@index');
 
 Route::get('/create', 'AdminController@create');
 
-Route::post('/manage', 'AdminController@store');
+Route::post('/dog', 'AdminController@store');
 
-Route::get('/manage/{id}', 'AdminController@show');
+Route::get('/dog/{id}', 'AdminController@show');
 
-Route::get('/manage/{id}/edit', 'AdminController@edit');
+Route::get('/dog/{id}/edit', 'AdminController@edit');
 
-Route::put('/manage/{id}', 'AdminController@update');
+Route::put('/dog/{id}', 'AdminController@update');
 
-Route::delete('/manage/{id}', 'AdminController@destroy');
+Route::delete('/dog/{id}', 'AdminController@destroy');
 
 //Contact
 Route::resource('contact', 'ContactController');

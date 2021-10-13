@@ -32,7 +32,7 @@ class NewsController extends Controller
         {
             $news = News::get();
         }
-        return view('admin/news', compact('news', 'search'));
+        return view('admin/news/news', compact('news', 'search'));
     }
 
     /**
