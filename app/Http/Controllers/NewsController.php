@@ -28,10 +28,12 @@ class NewsController extends Controller
                             ->orWhere("detail", "like", "%{$search}%")
                             ->get();;
         }
+
         else
         {
             $news = News::get();
         }
+
         return view('admin/news/news', compact('news', 'search'));
     }
 
@@ -43,6 +45,7 @@ class NewsController extends Controller
     public function create()
     {
         $news = News::get();
+
         return view("admin/news/create", compact('news'));
     }
 
@@ -54,11 +57,10 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        News::insert([
-            'title'=>$request->title,
-            'subtitle'=>$request->subtitle,
-            'detail'=>$request->detail,
-        ]);
+        $requestData = $request->all();
+
+        News::create($requestData);
+
         return redirect('message');
     }
 
@@ -71,6 +73,7 @@ class NewsController extends Controller
     public function show($id)
     {
         $news = News::findOrFail($id);
+
         return view('admin/news/show', compact('news'));
     }
 
@@ -83,6 +86,7 @@ class NewsController extends Controller
     public function edit($id)
     {
         $news = News::findOrFail($id);
+
         return view('admin/news/edit', compact('news'));
     }
 
@@ -95,11 +99,11 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        News::find($id)->update([
-            'title'=>$request->title,
-            'subtitle'=>$request->subtitle,
-            'detail'=>$request->detail,
-        ]);
+        $requestData = $request->all();
+
+        $news = News::findOrFail($id);
+        $news->update($requestData);
+
         return redirect('message');
     }
 
@@ -114,11 +118,5 @@ class NewsController extends Controller
         News::destroy($id);
 
         return redirect('message');
-
-
-
-        //$news = News::find($id);
-        //$news->delete();
-        //return redirect('message')->with('ลบ','ลบข้อมูลข่าวสารเรียบร้อยแล้ว');
     }
 }

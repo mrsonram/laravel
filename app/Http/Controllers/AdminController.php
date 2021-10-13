@@ -34,7 +34,9 @@ class AdminController extends Controller
                 ->orWhere("owner", "like", "%{$q}%")
                 ->orWhere("location", "like", "%{$q}%")
                 ->get();;
-        } else {
+        }
+
+        else {
             $animals = Admin::get()
                 ->sortBy("name");
         }
@@ -50,6 +52,7 @@ class AdminController extends Controller
     public function create()
     {
         $animals = Admin::get();
+
         return view('admin/dogs/create', compact('animals'));
     }
 
@@ -81,6 +84,7 @@ class AdminController extends Controller
     public function show($id)
     {
         $animals = Admin::findOrFail($id);
+
         return view('admin/dogs/show', compact('animals'));
     }
 
@@ -93,6 +97,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $animals = Admin::findOrFail($id);
+
         return view('admin/dogs/edit', compact('animals'));
     }
 
@@ -105,57 +110,16 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //$requestData = $request->all();
-
-        //$animals = Admin::findOrFail($id);
-
-        //$animals->update($requestData);
-
-        //return redirect('manage');
-        $img = $request->file('image');
-        if ($img) {
-            $img_gen = hexdec(uniqid());
-            $img_exe = strtolower($img->getClientOriginalExtension());
-            $img_name = $img_gen . '.' . $img_exe;
-            $save = 'images/';
-            $path = $save . $img_name;
-
-            Admin::find($id)->update([
-                'name' => $request->name,
-                'type' => $request->type,
-                'species' => $request->species,
-                'marking' => $request->marking,
-                'gender' => $request->gender,
-                'collar' => $request->collar,
-                'age' => $request->age,
-                'status' => $request->status,
-                'vet' => $request->vet,
-                'owner' => $request->owner,
-                'image' => $path,
-                'location' => $request->location,
-                'lat' => $request->lat,
-                'lng' => $request->lng,
-            ]);
-            $img->move($save, $img_name);
-            return redirect('dog');
-        } else {
-            Admin::find($id)->update([
-                'name' => $request->name,
-                'type' => $request->type,
-                'species' => $request->species,
-                'marking' => $request->marking,
-                'gender' => $request->gender,
-                'collar' => $request->collar,
-                'age' => $request->age,
-                'status' => $request->status,
-                'vet' => $request->vet,
-                'owner' => $request->owner,
-                'location' => $request->location,
-                'lat' => $request->lat,
-                'lng' => $request->lng,
-            ]);
-            return redirect('dog');
+        $requestData = $request->all();
+                if ($request->hasFile('image')) {
+            $requestData['image'] = $request->file('image')
+                ->store('images', 'public');
         }
+
+        $animals = Admin::findOrFail($id);
+        $animals->update($requestData);
+
+        return redirect('dog')->with('ข้อความ', 'อัพเดตข้อมูลแล้ว');
     }
 
     /**

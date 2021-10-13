@@ -39,7 +39,7 @@
                                     onsubmit="return validate();" style="display:inline">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button class="btn btn-danger btn-lg" type="submit">ลบ</button>
+                                    <button class="btn btn-danger btn-lg" data-mdb-ripple-color="dark" type="submit">ลบ</button>
                                 </form>
                                 <script>
                                     function validate() {

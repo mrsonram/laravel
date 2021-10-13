@@ -77,6 +77,7 @@ class PetController extends Controller
     public function show($id)
     {
         $animals = Pet::findOrFail($id);
+
         return view('pet/show')->with([
             'data' => $animals
         ]);
@@ -85,6 +86,7 @@ class PetController extends Controller
     public function message($id)
     {
         $news = News::findOrFail($id);
+
         return view('pet/news/show')->with([
             'data' => $news
         ]);

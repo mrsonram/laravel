@@ -1,17 +1,25 @@
-<form class="row g-3">
-    <div class="col-12 mb-2">
+<div class="col-12">
+    <div class="form-outline">
+        <input type="text" class="form-control" id="title" required name="title"
+            value="{{ isset($news->title) ? $news->title : '' }}" />
         <label for="title" class="form-label">ชื่อเรื่อง</label>
-        <input type="text" class="form-control" name="title" value="{{ isset($news->title) ? $news->title : '' }}" placeholder="เรื่อง..."/>
+        <div class="invalid-tooltip">ไม่สามารถเว้นว่างได้</div>
     </div>
-    <div class="col-12 mb-2">
+</div>
+<div class="col-12">
+    <div class="form-outline">
+        <input type="text" class="form-control" id="subtitle" required name="subtitle"
+            value="{{ isset($news->subtitle) ? $news->subtitle : '' }}" />
         <label for="subtitle" class="form-label">ชื่อเรื่องย่อย</label>
-        <input type="text" class="form-control" name="subtitle" value="{{ isset($news->subtitle) ? $news->subtitle : '' }}" placeholder="ชื่อเรื่องย่อย..."/>
+        <div class="invalid-tooltip">ไม่สามารถเว้นว่างได้</div>
     </div>
-    <div class="col-12 mb-3">
+</div>
+<div class="col-12">
+    <div class="form-outline">
+        <textarea class="form-control" id="detail"
+            placeholder="รายละเอียดข่าวสาร เช่น ตรวจสุขภาพสุนัข เริ่มตั้งแต่ 10:00 - 15:00 เป็นต้น"
+            required name="detail">{{ isset($news->detail) ? $news->detail : '' }}</textarea>
         <label for="detail" class="form-label">รายละเอียดข่าวสาร</label>
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="รายละเอียด..." id="floatingTextarea2" name="detail" style="height: 100px" value="{{ isset($news->detail) ? $news->detail : '' }}"></textarea>
-            <label for="floatingTextarea2">รายละเอียด</label>
-        </div>
+        <div class="invalid-tooltip">ไม่สามารถเว้นว่างได้</div>
     </div>
-</form>
+</div>

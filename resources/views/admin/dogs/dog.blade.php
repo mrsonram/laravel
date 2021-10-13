@@ -11,7 +11,7 @@
         <div class="col-10">
             <nav class="navbar navbar-light bg-white">
                 <div class="container">
-                    <a class="btn btn-dark px-3" href="{{ url('/') }}/create" role="button">
+                    <a class="btn btn-dark px-3" data-mdb-ripple-color="dark" role="button" href="{{ url('/') }}/dog/create">
                         <i class="fas fa-plus-circle fa-lg"></i>
                     </a>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
@@ -28,12 +28,10 @@
                     <tr>
                         <th scope="col">ชื่อ</th>
                         <th scope="col">พันธุ์</th>
-                        <th scope="col">ลาย</th>
                         <th scope="col">เพศ</th>
                         <th scope="col">ปลอกคอสี</th>
                         <th scope="col">อายุ</th>
                         <th scope="col">สถานะ</th>
-                        <th scope="col">สถานะทำหมัน</th>
                         <th scope="col">เจ้าของ</th>
                         <th scope="col">จัดการ</th>
                     </tr>
@@ -42,12 +40,10 @@
                     <tr>
                         <td scope="col">{{ isset($animals->name) ? $animals->name : 'ไม่ทราบ' }}</td>
                         <td scope="col">{{ isset($animals->species) ? $animals->species : 'ไม่ทราบ' }}</td>
-                        <td scope="col">{{ isset($animals->marking) ? $animals->marking : 'ไม่ทราบ' }}</td>
                         <td scope="col">{{ isset($animals->gender) ? $animals->gender : 'ไม่ทราบ' }}</td>
                         <td scope="col">{{ isset($animals->collar) ? $animals->collar : 'ไม่ทราบ' }}</td>
                         <td scope="col">{{ isset($animals->age) ? $animals->age : 'ไม่ทราบ' }}</td>
                         <td scope="col">{{ isset($animals->status) ? $animals->status : 'ไม่ทราบ' }}</td>
-                        <td scope="col">{{ isset($animals->vet) ? $animals->vet : 'ไม่ทราบ' }}</td>
                         <td scope="col">{{ isset($animals->owner) ? $animals->owner : 'ไม่ทราบ' }}</td>
                         <td>
                         <div class="d-grid gap-2 d-md-block">

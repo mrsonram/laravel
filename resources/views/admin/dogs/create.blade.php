@@ -9,20 +9,17 @@
                         <strong>กรอกข้อมูล</strong>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('/dog') }}" accept-charset="UTF-8" class="form-horizontal"
-                            enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/dog') }}" accept-charset="UTF-8"
+                            class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
 
                             {{ csrf_field() }}
                             {{ method_field('POST') }}
 
-                            <div class="row">
-                                <div class="col"></div>
-                                <div class="col-12">
-                                    @include("admin/dogs/form")
-                                    <button type="submit" class="btn btn-success btn-lg">บันทึก</button>
-                                    <a href="{{ url('/') }}/dog" class="btn btn-light btn-lg">ยกเลิก</a>
-                                </div>
-                                <div class="col"></div>
+                            @include("admin/dogs/form")
+
+                            <div class="col-12">
+                            <button class="btn btn-success btn-lg" data-mdb-ripple-color="dark" type="submit">บันทึก</button>
+                            <a href="{{ url('/') }}/dog" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">ยกเลิก</a>
                             </div>
                         </form>
                     </div>

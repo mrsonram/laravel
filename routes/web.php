@@ -43,43 +43,15 @@ Route::get('/about', function () {
 });
 
 //Admin
-Route::get('/dog', 'AdminController@index');
-
-Route::get('/create', 'AdminController@create');
-
-Route::post('/dog', 'AdminController@store');
-
-Route::get('/dog/{id}', 'AdminController@show');
-
-Route::get('/dog/{id}/edit', 'AdminController@edit');
-
-Route::put('/dog/{id}', 'AdminController@update');
-
-Route::delete('/dog/{id}', 'AdminController@destroy');
+Route::resource('dog', 'AdminController');
 
 //Contact
 Route::resource('contact', 'ContactController');
 
-Route::get('/contact', 'ContactController@index');
-
-Route::delete('/contact/{id}', 'ContactController@destroy');
-
 //News
-Route::get('/message', 'NewsController@index');
+Route::resource('message', 'NewsController');
 
-Route::get('/message/create', 'NewsController@create');
-
-Route::post('/message', 'NewsController@store');
-
-Route::get('/message/{id}', 'NewsController@show');
-
-Route::get('/message/{id}/edit', 'NewsController@edit');
-
-Route::put('/message/{id}', 'NewsController@update');
-
-Route::delete('/message/{id}', 'NewsController@destroy');
-
-//Test Add Location
+//Google Map
 Route::get('google/add', function () {
     return view('google/app');
 });
@@ -92,3 +64,8 @@ Route::get('/google/{id}', 'GoogleMapController@show');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/run', function () {
+    return view('run');
+});

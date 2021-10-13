@@ -1,4 +1,4 @@
-<img class="img-fluid rounded mb-5" src="{{ isset($data->image) ? asset($data->image) : asset('source/background.png') }}" alt="..." />
+<img class="img-fluid rounded mb-5" src="{{ isset($data->image) ? asset('storage/'.$data->image) : asset('source/background.png') }}" alt="..." />
 <!-- Pet Info Modal - Text-->
 <div class="card-body">
     <h4 class="card-text">
